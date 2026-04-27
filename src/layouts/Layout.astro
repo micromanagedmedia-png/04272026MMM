@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+
+import ScrollToTop from '../components/ScrollToTop.astro';
+import MobileFloatingBar from '../components/MobileFloatingBar.astro';
+import GoogleReviewsBadge from '../components/GoogleReviewsBadge.astro';
+import ChatWidget from '../components/ChatWidget';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "MicroManaged Media | Google Ads & Lead Generation for Contractors",
+  description = "Lead generation systems built for local service contractors. Google Ads management, AI answering, call tracking, contractor websites & Google Maps optimization. If the phone isn't ringing — we fix that.",
+  canonical = "https://micromanagedmedia.com"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <link rel="canonical" href={canonical} />
+    
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://micromanagedmedia.com/og-image.jpg" />
+    <meta property="og:url" content="https://micromanagedmedia.com" />
+    <meta property="og:site_name" content="MicroManaged Media" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MicroManaged Media | Google Ads & Lead Generation for Contractors" />
+    <meta name="twitter:image" content="https://micromanagedmedia.com/og-image.jpg" />
+    <meta name="robots" content="index, follow" />
+
+    <script type="application/ld+json" set:html={`
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://micromanagedmedia.com/#organization",
+  "name": "MicroManaged Media, Inc.",
+  "alternateName": "Micromanaged Media",
+  "description": "Lead generation systems for local service contractors — Google Ads management, AI answering, call tracking, contractor websites, and Google Maps optimization. Serving HVAC, plumbing, roofing, electrical, and home service businesses across 50 U.S. markets.",
+  "url": "https://micromanagedmedia.com",
+  "telephone": "+12517650333",
+  "email": "bob@micromanagedmedia.com",
+  "founder": { "@type": "Person", "name": "Bob Rutledge" },
+  "sameAs": ["https://www.facebook.com/MicroManagedMedia","https://www.youtube.com/@ButHey_WhatDoIKnow"],
+  "areaServed": { "@type": "Country", "name": "United States" },
+  "knowsAbout": ["Google Ads for contractors","PPC management","Lead generation for home services","Call tracking","AI answering service","Contractor website design","Google Maps optimization","5-star review generation"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Contractor Marketing Services",
+    "itemListElement": [
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Google Ads Management for Contractors"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Answering Service"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Call Tracking & Lead Tracking"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Contractor Website Design"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Google Maps Optimization"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"5-Star Review Generation"}}
+    ]
+  }
+}
+    `} />
+    
+    <script type="application/ld+json" set:html={`
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://micromanagedmedia.com",
+  "name": "MicroManaged Media",
+  "description": "Lead generation systems for local service contractors.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://micromanagedmedia.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+    `} />
+    <slot name="head" />
+  </head>
+  <body class="bg-background text-foreground font-sans antialiased flex flex-col min-h-screen relative pb-16 md:pb-0">
+    <slot />
+    <MobileFloatingBar />
+    <GoogleReviewsBadge />
+    <ChatWidget client:only="react" />
+    <ScrollToTop />
+  </body>
+</html>

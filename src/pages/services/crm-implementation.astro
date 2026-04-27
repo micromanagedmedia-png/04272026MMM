@@ -1,0 +1,103 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const sections = [
+  {
+    heading: "Simplicity Over Bloat: Why Contractors Don't Need HubSpot",
+    body: `<p>Most CRM platforms are built for sales teams, not contractors. They have pipeline stages designed for a 90-day B2B sales cycle, features built for account executives managing hundreds of deals, and pricing models that assume you have a marketing team to run them. For an HVAC company owner or a plumbing business with two technicians, these platforms create more overhead than value — and they almost never get used consistently.</p>
+<p>MicroManaged Media builds contractor CRM systems on <a href="https://www.airtable.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Airtable</a> — a flexible, visual database platform that's powerful enough to handle complex workflows but simple enough that anyone on your team can use it on day one without training. We configure it specifically around how your business works: what information you capture, how you route leads, what your follow-up process looks like, and what reports you need to run your business.</p>`,
+  },
+  {
+    heading: "Make.com: The Automation Engine Behind the System",
+    body: `<p>Airtable is the database. <a href="https://www.make.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Make.com</a> is what makes it move. We use Make.com to build the automation workflows that turn your CRM into an active system — not just a place to store data. When a new call comes in through the LeadTable™ system, Make.com automatically creates a record in Airtable, classifies the lead type, sends a Google Chat notification to your dispatcher, and triggers a follow-up SMS to the prospect — all within seconds, with no manual steps.</p>
+<p>Common contractor automations we build include: lead intake from web forms (built on <a href="https://www.fillout.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Fillout</a>) directly into Airtable, appointment confirmation and reminder SMS sequences via <a href="https://www.twilio.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Twilio</a>, post-job review request messages sent automatically 24 hours after completion, and weekly summary reports emailed to the owner every Monday morning. These are practical workflows that save your team hours every week and ensure no opportunity is missed.</p>`,
+  },
+  {
+    heading: "The Tech Stack: Airtable + Make.com + Twilio + Fillout",
+    body: `<p>Every tool in the system serves a specific, non-redundant purpose. <a href="https://www.airtable.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Airtable</a> is the CRM and data hub — every lead, every job, every customer record lives here in a simple, searchable database. <a href="https://www.make.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Make.com</a> is the automation engine — it connects everything, triggers actions, and handles the logic between platforms. <a href="https://www.twilio.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Twilio</a> provides the telephony layer — SMS notifications, call routing, and any text-based follow-up that your system sends. <a href="https://www.fillout.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Fillout</a> handles intake forms — fast-loading, mobile-friendly forms that feed directly into Airtable.</p>
+<p>This modular approach means you're never locked into a single all-in-one platform that controls all your data. Each tool does its job exceptionally well, and if a better option emerges in any category, it can be swapped without rebuilding the entire system. It's a professional-grade stack that costs a fraction of enterprise all-in-one platforms — and works better for a local service business.</p>`,
+  },
+  {
+    heading: "Revenue You're Currently Losing to Missed Follow-Ups",
+    body: `<p>The biggest source of lost revenue for most contractors isn't a bad market or expensive ads — it's leads that were never followed up on. A homeowner calls at 6pm, gets voicemail, and calls the next contractor on the list. An estimate is sent but never followed up with a call. A job is completed but no one ever asks for a review. These are silent revenue leaks that happen every week without a system in place to catch them.</p>
+<p>The automation workflows we build are specifically designed to close these gaps. Every inbound lead gets an immediate response — a text acknowledgment, a follow-up call reminder, or a Gracie™ AI voice call if after hours. Every estimate that's sent gets a 48-hour follow-up trigger. Every completed job gets a review request 24 hours later. Over 12 months, these automated touches consistently generate 20–40% more revenue from the same ad spend — simply by closing the invisible gaps in your follow-up process.</p>`,
+  },
+];
+
+const faqs = [
+  {
+    question: "Do I really need a CRM if I'm a small contractor?",
+    answer: "Yes — especially if you're spending money on advertising. Without a CRM, leads fall through the cracks, follow-ups don't happen, and you have no visibility into which marketing channels are actually producing jobs. Our Airtable-based system is designed to be simple enough for a one-person operation while powerful enough to scale with your business.",
+  },
+  {
+    question: "Why Airtable instead of Salesforce or HubSpot?",
+    answer: "Salesforce and HubSpot are built for enterprise sales teams with dedicated CRM administrators. Airtable gives you the flexibility of a real database with a UI that anyone on your team can use without weeks of training. It's also significantly less expensive — and we configure it specifically for how contractor businesses work, not how software companies think businesses work.",
+  },
+  {
+    question: "What does the Make.com automation actually do?",
+    answer: "Make.com connects all your tools together. When a call comes in or a form is submitted, Make.com automatically creates a lead record in Airtable, sends you or your dispatcher a Google Chat notification, triggers a follow-up SMS to the prospect, and adds the lead to your follow-up queue. It also handles appointment reminders, review requests after job completion, and weekly performance summary emails. All of this runs automatically — no manual data entry required.",
+  },
+  {
+    question: "Can this system integrate with my existing phone setup?",
+    answer: "Yes. The system integrates with LeadTable™ call tracking and Twilio for SMS, so your existing phone number stays the same. Call data feeds into Airtable automatically. We configure the integration around your specific setup — whether you're using a single line, multiple techs, or a dispatching system.",
+  },
+  {
+    question: "How long does setup take?",
+    answer: "Most systems are fully configured and live within 1–2 weeks. We handle the entire setup: Airtable base configuration, Make.com workflow building, Twilio integration, form setup, and testing. We also walk your team through how to use the system before we hand it over.",
+  },
+  {
+    question: "What if I want to customize it later?",
+    answer: "That's one of the biggest advantages of this stack. Airtable is fully customizable — you can add fields, tables, and views without any technical knowledge. Make.com workflows can be modified or extended as your business grows. You're not locked into a rigid system designed by a software company that doesn't know your trade.",
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'This is Gracie™ — AI Receptionist',
+    desc: 'Gracie feeds every call directly into your Airtable CRM with a full lead summary — so your automation workflows fire the moment a call ends.',
+    href: '/services/ai-automation',
+  },
+  {
+    title: 'Google PPC Advertising',
+    desc: 'Every Google Ad lead flows into your CRM automatically — tracked, followed up, and reported. The ad campaign and the CRM work together as one system.',
+    href: '/services/google-ppc',
+  },
+  {
+    title: '5-Star Review Generation',
+    desc: 'Automatically request reviews from completed jobs using your CRM data. Make.com sends the review request exactly 24 hours after job close.',
+    href: '/services/5-star-reviews',
+  },
+];
+---
+
+  <ServicePageLayout
+    title="CRM & Marketing Automation"
+    subtitle="Airtable-Based Systems for Contractors"
+    tagline="Contractors don't need enterprise CRMs. They need a simple, fast system that logs every lead, triggers the right follow-ups, and keeps jobs from falling through the cracks. We build that on Airtable and Make.com."
+    iconSvg='<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>'
+    heroStats={[
+      { value: 'Airtable', label: 'Primary CRM Platform' },
+      { value: 'Make.com', label: 'Automation Engine' },
+      { value: 'Twilio', label: 'SMS & Notifications' },
+      { value: 'Fillout', label: 'Form Systems' },
+    ]}
+    benefits={[
+      'Airtable CRM setup and configuration',
+      'Make.com automation workflows',
+      'Lead intake and routing automations',
+      'Follow-up sequence automation',
+      'Appointment tracking and reminders',
+      'Review generation workflows',
+      'Google Chat real-time notifications',
+      'Integration with LeadTable™ call tracking',
+    ]}
+    sections={sections}
+    ctaHeading="Build a System Your Team Will Actually Use"
+    faqs={faqs}
+    relatedServices={relatedServices}
+    canonicalPath="/services/crm-implementation"
+    metaTitle="Contractor CRM & Sales Automation Systems | Lead Management"
+    metaDescription="Stop letting leads fall through the cracks. We build custom Airtable CRM and Make.com systems for contractors to automate follow-ups and close more jobs."
+  />

@@ -1,0 +1,142 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Answer My Calls 24/7";
+const subtitle = "Never Miss Another Good Lead";
+const tagline = "If your phone is ringing and nobody answers, that is not just a phone problem. It is lost revenue. MicroManaged Media helps contractors answer calls 24/7 with a custom AI receptionist that sounds professional, asks the right questions, and captures lead details.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+
+const heroStats = [
+  { value: "24/7", label: "Always Available" },
+  { value: "100%", label: "Calls Answered" },
+  { value: "0", label: "Missed Leads" },
+  { value: "Instant", label: "Lead Notifications" }
+];
+
+const benefits = [
+  "Answers every call — day, night, weekends & holidays",
+  "Greets callers professionally in your company name",
+  "Screens new leads, existing customers, spam & vendors",
+  "Captures name, phone, address, service & job details",
+  "Warm transfers hot leads to you or your team",
+  "Sends instant summaries by text, email or CRM",
+  "Custom-built around your business — not a template"
+];
+
+const sections = [
+  {
+    heading: "A Better Way to Handle Inbound Calls",
+    body: `
+      <p>Most small businesses do not need a bloated call center. They need a smarter front line.</p>
+      <p>Our AI answering solution is built to do what matters most: answer inbound calls day or night, greet callers professionally, ask one question at a time, gather name, phone number, address, service needed, and job details — then identify whether the caller is a real prospect, existing customer, salesperson, or spam and send the call where it needs to go.</p>
+      <p>This is not a generic chatbot bolted onto a phone number. It is a custom-built AI receptionist tailored to your business, your services, your territory, and the way you want calls handled.</p>
+    `
+  },
+  {
+    heading: "Built for Contractors and Local Service Companies",
+    body: `
+      <p>We work with businesses where the phone matters — HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, and other home service businesses.</p>
+      <p>If your business depends on inbound calls, speed to lead, and screening out junk calls, this service was built for you. Whether someone calls during business hours, after hours, on weekends, or when your team is tied up in the field, your business can still respond fast and professionally.</p>
+    `
+  },
+  {
+    heading: "What Your AI Receptionist Can Do",
+    body: `
+      <ul class="space-y-3 mt-3">
+        <li class="flex gap-3"><span class="font-bold whitespace-nowrap">Answer Every Call.</span> <span>No more missed opportunities just because you were under a house, on a ladder, driving, at dinner, or closed for the day.</span></li>
+        <li class="flex gap-3"><span class="font-bold whitespace-nowrap">Screen the Caller.</span> <span>Not every call deserves the same treatment. We help your AI identify new leads, current customers, vendor calls, telemarketers, and wrong numbers.</span></li>
+        <li class="flex gap-3"><span class="font-bold whitespace-nowrap">Capture Key Lead Information.</span> <span>Collect caller name, phone number, email, property address, service requested, time frame, and notes about the problem — before the call ever reaches you.</span></li>
+        <li class="flex gap-3"><span class="font-bold whitespace-nowrap">Warm Transfer Important Calls.</span> <span>When a good lead needs a real person, the system transfers the call to you or your team immediately.</span></li>
+        <li class="flex gap-3"><span class="font-bold whitespace-nowrap">Handle After-Hours Calls.</span> <span>Many good prospects call after work, early in the morning, or on weekends. Instead of going to voicemail, they reach a responsive assistant.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "Custom-Built, Not Cookie-Cutter",
+    body: `
+      <p>There is a big difference between a cheap off-the-shelf bot and a properly configured AI answering system. We do not hand you a canned template and wish you luck.</p>
+      <p>We build the flow around your business: your company name, your services, your cities and service area, your office hours, your emergency rules, your transfer preferences, your questions for new callers, and your preferred tone and style. That means your callers get a better experience, and you get better lead information.</p>
+    `
+  },
+  {
+    heading: "Why This Matters — Where Money Gets Lost",
+    body: `
+      <p>A lot of contractors spend money to make the phone ring, but they do not fully control what happens next. That is where money gets lost.</p>
+      <p>You can pay for <a href="/get-more-leads" class="text-accent font-semibold hover:underline">Google Ads for contractors</a>, Local Services Ads, SEO, Google Business Profile optimization, direct mail, wraps, yard signs, and referrals. But if the call goes unanswered, gets handled poorly, or gets lost in the shuffle, the lead is wasted. Answering calls well is part of marketing.</p>
+    `
+  },
+  {
+    heading: "Works With the Rest of Your Lead System",
+    body: `
+      <p>This service works especially well alongside the other systems we help businesses build — <a href="/track-calls-leads" class="text-accent font-semibold hover:underline">call tracking and lead tracking</a>, form tracking, <a href="/ai-chatbot" class="text-accent font-semibold hover:underline">AI chatbot lead capture</a>, Google Ads lead generation, contractor websites, and lead reporting and follow-up systems.</p>
+      <p>This is not just about answering the phone. It is about improving what happens from the first contact forward. We think about where the lead came from, how the call was handled, whether it got transferred, whether your team followed up, and whether the lead turned into revenue.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "Does the AI receptionist sound robotic?",
+    answer: "No. It uses advanced conversational AI voice technology that sounds natural and professional. Most callers do not realize they are speaking with an AI unless told."
+  },
+  {
+    question: "What happens when a hot lead calls?",
+    answer: "The system can warm transfer the call directly to you or a team member in real time. You also receive an instant notification with the lead summary so you can call back immediately if needed."
+  },
+  {
+    question: "Can it handle after-hours and weekend calls?",
+    answer: "Yes — that is one of its most valuable features. Many prospects call after work or on weekends. Instead of hitting voicemail and calling your competitor, they reach your AI receptionist and get a professional response."
+  },
+  {
+    question: "How is this different from a generic answering service?",
+    answer: "It is custom-built for your specific business, services, service area, and call handling rules. It is not a shared pool of human operators reading a generic script — it is your own AI receptionist configured specifically for how you operate."
+  },
+  {
+    question: "How quickly can it be set up?",
+    answer: "Most businesses are live within 5 to 7 business days. We handle the entire setup including custom scripting, call flow configuration, and integration with your existing tools."
+  },
+  {
+    question: "What information does it capture from callers?",
+    answer: "You decide. Typical setups collect caller name, phone number, email address, property or project address, service requested, time frame, and notes about the problem. We configure the questions around what your business actually needs."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "More ad clicks mean more inbound calls. Pair Google Ads with an AI answering service so every call your ads generate gets a professional response.",
+    href: "/get-more-leads"
+  },
+  {
+    title: "Lead Generation & Tracking",
+    desc: "See exactly where every call came from and what happened next — so your answering system and your marketing data work together.",
+    href: "/track-calls-leads"
+  },
+  {
+    title: "AI Integration for Contractors",
+    desc: "When callers prefer chat over calls, an AI chatbot captures leads after hours — the perfect complement to your AI answering service.",
+    href: "/ai-chatbot"
+  }
+];
+
+const ctaHeading = "Stop Letting Good Calls Go Cold";
+const canonicalPath = "/answer-my-calls";
+const metaTitle = "AI Answering Service for Contractors | MicroManaged Media";
+const metaDescription = "Never miss another lead. MicroManaged Media builds custom AI receptionist systems that answer every contractor call 24/7 — day, night, weekends, and holidays.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

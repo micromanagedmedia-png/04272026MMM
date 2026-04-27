@@ -1,0 +1,147 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Call & Lead Tracking Software for Contractors";
+const subtitle = "Lead Tracking for Contractors";
+const tagline = "Know which leads came in, where they came from, and what happened next. MicroManaged Media, Inc. helps contractors and service businesses track every call and lead so you can stop guessing and start seeing what is really happening inside your inbound lead flow.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>`;
+
+const heroStats = [
+  { value: "100%", label: "Call Attribution" },
+  { value: "AI", label: "Call Summaries" },
+  { value: "Multi", label: "Channel Tracking" },
+  { value: "Real-Time", label: "Notifications" }
+];
+
+const benefits = [
+  "Track calls, form fills, and chatbot leads together",
+  "See which marketing channels are producing real leads",
+  "Understand lead volume and lead source attribution",
+  "Catch missed opportunities before they go cold",
+  "Improve follow-up with organized lead status tracking",
+  "Practical reporting — not bloated dashboards",
+  "Built for how service businesses actually work"
+];
+
+const sections = [
+  {
+    heading: "More Than Just Call Tracking",
+    body: `
+      <p>Basic call tracking is not enough anymore. Today, leads come in from multiple directions: phone calls, website forms, <a href="/ai-chatbot" class="text-accent font-semibold hover:underline">AI chatbot conversations</a>, Google Business Profile activity, <a href="/get-more-leads" class="text-accent font-semibold hover:underline">Google Ads for contractors</a>, direct traffic, and referrals.</p>
+      <p>A lot of contractors are spending money to make the phone ring, but they still cannot clearly answer basic questions. Which ad campaign produced the call? Which calls turned into real opportunities? Which form fills were contacted? Which chatbot leads came in after hours? Which marketing is actually working?</p>
+      <p>We help you track and organize those leads so you can see the bigger picture — not just a disconnected list of phone calls and emails.</p>
+    `
+  },
+  {
+    heading: "Built for Contractors and Local Service Businesses",
+    body: `
+      <p>If you run a service business, leads do not always come in neatly. A customer may call first. Another may fill out a form late at night. Another may start with the chatbot and leave a phone number. One person may call from your Google Ads landing page, while another found you on Google Maps.</p>
+      <p>We help bring that information together so you can better understand lead volume, lead sources, and follow-up. This is especially valuable for HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, gutter companies, and other local service businesses.</p>
+    `
+  },
+  {
+    heading: "What We Track",
+    body: `
+      <p>Our lead tracking systems can help you monitor:</p>
+      <ul>
+        <li><strong>Phone Calls:</strong> <span>Track inbound calls by source so you can see whether they came from Google Ads, your website, Google Business Profile, or other marketing channels.</span></li>
+        <li><strong>Form Fill Leads:</strong> <span>Capture and organize form submissions so they do not get lost in email inboxes or buried in a website notification trail.</span></li>
+        <li><strong>AI Chatbot Leads:</strong> <span>More people now start with chat instead of calling or filling out a form. We help track chatbot conversations that turn into real leads.</span></li>
+        <li><strong>Lead Source Attribution:</strong> <span>See where leads originated so you can make better decisions about your marketing and your spending.</span></li>
+        <li><strong>Lead Status and Follow-Up:</strong> <span>A lead is not just about coming in. It also matters whether your team contacted the lead and what happened next.</span></li>
+        <li><strong>Call Summaries and Details:</strong> <span>Store useful information about calls so you can review outcomes, spot missed opportunities, and improve follow-up.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "Stop Letting Leads Disappear into the Cracks",
+    body: `
+      <p>A surprising number of good leads get wasted after they come in. That happens when calls go unanswered, form fills are overlooked, chatbot leads are never followed up, nobody knows the source of the lead, there is no easy way to review what happened, or reporting is scattered across too many places.</p>
+      <p>One of the biggest culprits: missed calls. When a lead calls after hours and nobody answers, that opportunity is gone — unless you have an <a href="/answer-my-calls" class="text-accent font-semibold hover:underline">AI answering service</a> that captures the details automatically. Pairing call tracking with AI answering gives you both visibility and coverage.</p>
+      <p>Without good tracking, business owners are often left with half the story. You may know that the phone rang, but not whether it was a good lead. You may know that a form came in, but not whether anyone followed up. You may know you are spending money on advertising, but not whether the lead volume justifies it.</p>
+      <p>We help fix that by creating a more connected lead tracking process.</p>
+    `
+  },
+  {
+    heading: "Track Calls, Forms, and Chatbot Leads Together",
+    body: `
+      <p>One of the biggest problems in small business marketing is fragmentation. Calls may be tracked in one place. Forms may arrive in another. Chatbot leads may sit somewhere else. Nobody has one clean view of what is happening.</p>
+      <p>We help bring these channels together so you can track call leads, form fill leads, chatbot leads, lead status, lead source, follow-up activity, and reporting trends. That gives you a more useful operating picture.</p>
+    `
+  },
+  {
+    heading: "Why Businesses Use MicroManaged Media",
+    body: `
+      <p>We understand that lead tracking is not just a technical task. It is part of running a better marketing and sales process.</p>
+      <p>Because we also work in call handling, AI receptionist systems, chatbot lead capture, contractor websites, and Google Ads, we understand how lead tracking fits into the full picture. We help businesses connect the dots between marketing activity, inbound response, lead capture, follow-up, reporting, and decision-making.</p>
+      <p>We do not build tracking systems for theory. We build them for how service businesses actually work — thinking through how leads arrive, who gets notified, how quickly someone can respond, and how to make reporting practical, not bloated.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "Why does lead tracking matter for a service business?",
+    answer: "When you can see where every call, form fill, and chatbot lead came from — and whether it was followed up — you can make smarter decisions about marketing spend, staffing, and follow-up processes. Without it, you are making expensive guesses."
+  },
+  {
+    question: "Can you track leads from multiple sources in one place?",
+    answer: "Yes. That is exactly the goal. Rather than having calls in one system, forms in another, and chatbot leads somewhere else, we help build a more unified view of all your inbound lead activity."
+  },
+  {
+    question: "What happens to leads that come in after hours?",
+    answer: "After-hours leads — especially chatbot leads and form fills — are particularly easy to lose. A good tracking system captures them, notifies the right person, and makes sure they are visible and followed up quickly."
+  },
+  {
+    question: "Do I need to change my existing phone number?",
+    answer: "No. Your main business number stays the same. Tracking numbers are used alongside your existing setup to attribute calls to the right marketing channel — callers always reach you."
+  },
+  {
+    question: "How does this connect with your other services?",
+    answer: "Lead tracking integrates naturally with our call answering, AI chatbot, Google Ads management, and website services. When all those pieces feed into one organized system, you get a much clearer picture of what is working."
+  },
+  {
+    question: "What kind of reporting will I see?",
+    answer: "We focus on practical reporting that answers real business questions: Are we getting enough calls? Are form fills increasing? Are chatbot leads converting? Are we responding fast enough? We skip the bloated dashboards and focus on what actually helps you make decisions."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "Drive more inbound calls and form fills with manually managed Google Ads campaigns built specifically for service contractors.",
+    href: "/get-more-leads"
+  },
+  {
+    title: "AI Answering Service for Contractors",
+    desc: "Make sure every call your tracking captures is actually answered — with an AI receptionist that works around the clock.",
+    href: "/answer-my-calls"
+  },
+  {
+    title: "AI Integration for Contractors",
+    desc: "Capture website leads after hours with an AI chatbot — so your tracking shows the full picture, not just phone calls.",
+    href: "/ai-chatbot"
+  }
+];
+
+const ctaHeading = "Want a Better System for Tracking Every Call and Lead?";
+const canonicalPath = "/track-calls-leads";
+const metaTitle = "Call & Lead Tracking Software for Contractors";
+const metaDescription = "Track every call, form fill, and chatbot conversion. Our lead tracking systems for local service businesses let you know exactly which marketing channels work.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

@@ -1,0 +1,144 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Improve My Google Maps Presence";
+const subtitle = "Google Business Profile Optimization";
+const tagline = "When someone needs a plumber, HVAC contractor, electrician, or another local service, many times they search by service and location — then look at the map results. MicroManaged Media, Inc. helps contractors improve their Google Maps presence so they can get seen more often, build credibility faster, and generate more local leads.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>`;
+
+const heroStats = [
+  { value: "Local", label: "Search Visibility" },
+  { value: "More", label: "Inbound Calls" },
+  { value: "Trust", label: "Built Faster" },
+  { value: "Better", label: "Local Leads" }
+];
+
+const benefits = [
+  "Show up better in local searches that matter",
+  "Build trust faster with a complete, credible profile",
+  "Generate more inbound calls from Google Maps",
+  "Review strategy that supports stronger visibility",
+  "Service area and category alignment done right",
+  "Profile tied into your full lead-generation system",
+  "Works alongside your website, ads, and call tracking"
+];
+
+const sections = [
+  {
+    heading: "Your Google Business Profile Is Not Just a Listing",
+    body: `
+      <p>Your Google Maps presence is tied closely to your Google Business Profile, and it can have a major impact on how often your business appears when people search locally. For many service businesses, this is one of the first impressions a prospect gets.</p>
+      <p>They may see your business name, your reviews, your service category, your photos, your hours, your service area, your phone number, your website link, and your map visibility. If that profile is weak, incomplete, inconsistent, or poorly managed, it can cost you opportunities before you ever get a chance to talk to the customer.</p>
+    `
+  },
+  {
+    heading: "Built for Contractors and Local Service Businesses",
+    body: `
+      <p>We help service businesses improve their local visibility — especially businesses that depend on calls and leads from nearby customers. That includes HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, gutter companies, garage door companies, and other local service businesses.</p>
+      <p>If you want more local visibility in the cities and service areas you actually care about, your Google Maps presence deserves serious attention.</p>
+    `
+  },
+  {
+    heading: "What We Help Improve",
+    body: `
+      <p>A stronger Google Maps presence is not just about claiming a profile and hoping for the best. We help improve the things that support better local visibility and better customer response:</p>
+      <ul>
+        <li><strong>Google Business Profile Setup and Optimization:</strong> <span>We help make sure the profile is filled out properly and built around the services and markets you want to target.</span></li>
+        <li><strong>Service Area Relevance:</strong> <span>Your profile needs to align with the real areas you serve, not just a vague footprint.</span></li>
+        <li><strong>Category and Service Alignment:</strong> <span>What you tell Google about your business matters. We help improve how your services are represented.</span></li>
+        <li><strong>Photos and Profile Quality:</strong> <span>A more complete, credible profile can help build trust faster with prospects comparing their options.</span></li>
+        <li><strong>Review Strategy Support:</strong> <span>Reviews are one of the strongest trust signals on Google Maps. We help businesses improve how they generate and benefit from them.</span></li>
+        <li><strong>Posting and Activity Support:</strong> <span>An active profile can support a stronger overall presence and give prospects more reasons to trust what they see.</span></li>
+        <li><strong>Website and Landing Page Connection:</strong> <span>Your Google Maps presence works better when it is connected to a strong website and clear local service messaging.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "Credibility Matters as Much as Visibility",
+    body: `
+      <p>Showing up is important, but so is what people see when you do show up. If a prospect compares three companies on Google Maps, they are often making a fast judgment based on things like number and quality of reviews, how complete the profile looks, whether the business seems active, whether the service information is clear, and whether the company looks legitimate and established.</p>
+      <p>Many contractors run into the same issues: weak or incomplete business profiles, poor local visibility, inconsistent service descriptions, not enough recent reviews, weak calls to action, and no strategy for turning profile activity into real leads. We help tighten up those weak spots.</p>
+    `
+  },
+  {
+    heading: "A Better Google Maps Presence Supports the Rest of Your Marketing",
+    body: `
+      <p>Your Google Maps presence does not live in a vacuum. It works alongside your contractor website, your review generation efforts, your call tracking, your form tracking, your AI chatbot lead capture, your 24/7 AI receptionist, and your Google Ads campaigns.</p>
+      <p>That is one reason businesses use MicroManaged Media. We do not treat your Google Business Profile like an isolated listing. We look at how it fits into the broader lead-generation system — because a better Google Maps presence is not just about appearing on a screen. It is about helping the right prospects take the next step.</p>
+    `
+  },
+  {
+    heading: "Why Businesses Hire MicroManaged Media",
+    body: `
+      <p>We understand the difference between getting visibility and turning that visibility into opportunity. Because we also work in Google Ads, websites, call tracking, AI phone answering, review generation, and chatbot lead capture, we understand what happens after the customer finds you.</p>
+      <p>When someone is ready to hire, Google Maps can be one of the shortest paths between their search and your phone ringing. We help make sure that path is as clear and compelling as possible.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "Why does my Google Maps presence matter so much?",
+    answer: "When local customers search for a service, Google Maps results are often the first thing they see — before websites, before ads. A strong, credible profile means more calls and more opportunities from people who are already looking for what you offer."
+  },
+  {
+    question: "Do I need a physical address to show up on Google Maps?",
+    answer: "Not necessarily. Service-area businesses that go to the customer can show up on Google Maps without a storefront address. We know how to set this up correctly to maximize your coverage area and local visibility."
+  },
+  {
+    question: "How important are reviews for Google Maps visibility?",
+    answer: "Reviews are one of the strongest trust and visibility signals on Google Maps. The number of reviews, how recent they are, and the overall rating all affect how your business is perceived — and how often you show up when local customers are searching."
+  },
+  {
+    question: "How long does it take to see improvement?",
+    answer: "For most contractors in moderately competitive markets, meaningful improvement in local visibility is visible within 60–90 days of full optimization. More competitive markets may take longer, depending on your current profile strength and the competition in your area."
+  },
+  {
+    question: "Is this a one-time setup or ongoing work?",
+    answer: "Ongoing. Google rewards fresh content, new photos, consistent activity, and growing reviews. A one-time setup is a starting point — the businesses that maintain an active, updated profile tend to perform better over time."
+  },
+  {
+    question: "How does this connect with your other services?",
+    answer: "Your Google Maps presence works best as part of a complete system — alongside your website, Google Ads, call tracking, chatbot, and review generation. We understand how all of those pieces fit together and build your profile strategy with that bigger picture in mind."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "While you build organic Maps visibility, Google Ads puts you at the top of search results right now — targeting the same local customers.",
+    href: "/get-more-leads"
+  },
+  {
+    title: "5-Star Review Generation",
+    desc: "Reviews are one of the biggest ranking factors in Google Maps. A consistent review system is the fastest way to improve your local position.",
+    href: "/5-star-reviews"
+  },
+  {
+    title: "AI Answering Service for Contractors",
+    desc: "Every call generated from your Maps listing deserves a professional answer — day or night — so you never lose a local lead.",
+    href: "/answer-my-calls"
+  }
+];
+
+const ctaHeading = "Want to Improve Your Google Maps Presence and Generate More Local Leads?";
+const canonicalPath = "/google-maps";
+const metaTitle = "Google Maps Optimization for Contractors | MicroManaged Media";
+const metaDescription = "MicroManaged Media helps contractors improve their Google Maps presence — more local visibility, more calls, stronger credibility. Google Business Profile optimization built for service businesses.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

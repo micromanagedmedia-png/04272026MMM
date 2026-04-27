@@ -1,0 +1,103 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const sections = [
+  {
+    heading: "The Invisible Revenue Gap Every Contractor Has",
+    body: `<p>The average local service contractor misses 20–35% of inbound calls — after hours, during jobs, or simply when the owner is on another call. Each missed call is a potential job that went to the next contractor on the list. For a roofing company or an HVAC business, that's $2,000–$15,000 walking out the door every week, silently, without anyone noticing.</p>
+<p>This is Gracie™ was built to close that gap completely. It's an AI voice receptionist — not a chatbot, not a voicemail tree, but a natural-sounding AI that answers the phone like a knowledgeable front desk person, asks the right questions, handles the callers professionally, and either transfers the call live to your team or logs the lead and notifies you immediately so you can call back within minutes.</p>`,
+  },
+  {
+    heading: "Built on Retell AI and Twilio: The Best Infrastructure Available",
+    body: `<p>Gracie is built on <a href="https://www.retellai.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Retell AI</a> — one of the most advanced conversational voice AI platforms available. Retell's models produce natural, responsive conversations that don't feel robotic or scripted. Combined with <a href="https://www.twilio.com" target="_blank" rel="noopener noreferrer" class="text-accent font-semibold hover:underline">Twilio</a>'s telephony infrastructure for reliable call routing, recording, and forwarding, the result is a system that handles real contractor calls with the professionalism and consistency that a human receptionist would — at a fraction of the cost, and available every hour of every day.</p>
+<p>The system is custom-configured for your specific business: your trade, your service area, your typical call types, your business hours, and your escalation preferences. An HVAC company's Gracie knows the difference between an AC emergency at 2am and a routine maintenance inquiry, and handles each one appropriately. A roofing contractor's Gracie knows to capture insurance carrier information for storm damage calls. Every instance is built for your specific use case.</p>`,
+  },
+  {
+    heading: "What Gracie Does on Every Call",
+    body: `<p>When a call comes in, Gracie introduces herself as your business's answering service, confirms the caller has reached the right company, and begins a natural conversation to collect the information your team needs. She identifies new versus existing customers, collects name, callback number, service address, and job description. For emergency calls outside business hours, she can perform a warm transfer — actually connecting the caller live to the on-call tech. For standard inquiries, she provides a professional response and logs the lead for morning follow-up.</p>
+<p>Every call is recorded via Twilio, and an AI-generated summary is pushed to your Airtable CRM within minutes of call completion. Simultaneously, a Google Chat notification goes to your team with the key lead details — so a missed after-hours call gets seen the moment your dispatcher opens their phone in the morning. No lead sits in a voicemail box. No inquiry gets lost. Every call gets a response.</p>`,
+  },
+  {
+    heading: "Spam Filtering, Transfer Logic, and CRM Automation",
+    body: `<p>Spam calls and solicitors are one of the biggest time wasters for contractor businesses. Gracie's screening logic identifies and terminates spam calls immediately — protecting your team's time and keeping your call logs clean. Legitimate calls are routed based on the rules you set: business hours transfers go directly to your office line; after-hours emergencies go to your on-call tech; non-emergency after-hours calls get logged and trigger an automated morning callback reminder.</p>
+<p>All of this is wired into the Make.com automation system — meaning Gracie isn't just answering calls in isolation, she's the front end of a complete lead management workflow. A call comes in, Gracie handles it, the lead is created in Airtable, the team gets notified, and the follow-up sequence fires automatically. For contractors who are tired of their marketing investment leaking through unanswered calls and dropped leads, Gracie is the system that closes the gap for good.</p>`,
+  },
+];
+
+const faqs = [
+  {
+    question: "Does Gracie sound like a robot?",
+    answer: "No. Gracie is built on Retell AI — one of the most advanced conversational voice AI platforms available. The voice sounds natural, responsive, and professional. Most callers don't realize they're speaking with an AI unless they specifically ask or are told upfront.",
+  },
+  {
+    question: "What happens when a hot lead calls?",
+    answer: "Gracie performs a warm live transfer — she introduces the caller and connects them directly to you or your designated team member in real time. You also receive an instant Google Chat notification and the call summary in Airtable, so if you miss the transfer, you have everything you need to call back within minutes.",
+  },
+  {
+    question: "Can Gracie handle after-hours and weekend calls?",
+    answer: "Yes — that's one of Gracie's most valuable capabilities. She answers every call regardless of the time or day. After-hours emergency calls can be transferred live to your on-call tech. Standard after-hours inquiries are logged with full lead details and trigger a follow-up reminder for the morning. No lead ever hits voicemail.",
+  },
+  {
+    question: "How is this different from a generic answering service?",
+    answer: "Generic answering services use shared pools of human operators reading a generic script. Gracie is an AI receptionist custom-built for your specific business — your trade, your service area, your hours, your emergency protocols, and your escalation preferences. She's consistent, never has a bad day, and never forgets to ask a question. She's also significantly more cost-effective than a human answering service at comparable quality.",
+  },
+  {
+    question: "How quickly can it be set up?",
+    answer: "Most businesses are live within 5–7 business days. We handle the entire configuration: Retell AI voice setup, Twilio call routing, CRM integration with Airtable, Make.com notification workflows, and testing. We'll do a live call walk-through before handing the system over.",
+  },
+  {
+    question: "What information does Gracie capture?",
+    answer: "You decide. Typical setups collect caller name, callback number, service address, service type requested, timeline, and job description. For emergency services, she can also ask about urgency level and current symptoms. We configure the conversation flow around what your business actually needs to qualify and route leads effectively.",
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'CRM & Marketing Automation',
+    desc: 'Gracie feeds every call into your Airtable CRM automatically — triggering follow-up sequences, dispatcher notifications, and lead tracking without any manual entry.',
+    href: '/services/crm-implementation',
+  },
+  {
+    title: 'Google PPC Advertising',
+    desc: "Every dollar you spend on Google Ads is protected by Gracie — she answers every call your ads generate, day or night, so your ad spend never produces a missed lead.",
+    href: '/services/google-ppc',
+  },
+  {
+    title: '5-Star Review Generation',
+    answer: 'After Gracie logs the completed job, our automated review request system sends the customer a review link exactly 24 hours later — turning satisfied callers into published 5-star reviews.',
+    href: '/services/5-star-reviews',
+  },
+];
+---
+
+  <ServicePageLayout
+    title="This is Gracie™ — AI Receptionist"
+    subtitle="24/7 AI-Powered Call Answering for Contractors"
+    tagline="Gracie answers your calls 24/7, screens spam, collects lead data, performs live transfers to your team, and logs every call into your CRM — automatically. Stop missing calls. Stop losing jobs."
+    iconSvg='<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2"/></svg>'
+    heroStats={[
+      { value: '24/7', label: 'Always Answering' },
+      { value: 'Retell AI', label: 'Voice Engine' },
+      { value: 'Twilio', label: 'Call Infrastructure' },
+      { value: '0', label: 'Missed Calls Logged' },
+    ]}
+    benefits={[
+      'Answers calls 24/7 — never goes to voicemail',
+      'Built on Retell AI voice engine',
+      'Twilio call routing, recording, and forwarding',
+      'Screens spam and solicitor calls automatically',
+      'Identifies new vs. existing customers',
+      'Collects name, phone, address, and job type',
+      'Performs warm live transfers to your team',
+      'Logs every call to Airtable CRM instantly',
+    ]}
+    sections={sections}
+    ctaHeading="Stop Losing Jobs to Missed Calls"
+    faqs={faqs}
+    relatedServices={relatedServices}
+    canonicalPath="/services/ai-automation"
+    metaTitle="AI Receptionist for Contractors | 24/7 Call Answering Service"
+    metaDescription="Never miss a lead again. Our AI receptionist Gracie answers calls 24/7, screens spam, books appointments, and syncs directly to your CRM. Get started today."
+  />

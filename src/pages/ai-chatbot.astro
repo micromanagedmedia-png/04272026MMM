@@ -1,0 +1,146 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Capture Leads with AI Chatbot";
+const subtitle = "AI Lead Capture for Contractor Websites";
+const tagline = "Not every prospect wants to call. Not every prospect wants to fill out a form. MicroManaged Media, Inc. helps contractors and service businesses capture leads with an AI chatbot that engages visitors, answers basic questions, collects contact information, and helps turn website traffic into real opportunities.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>`;
+
+const heroStats = [
+  { value: "24/7", label: "Always On" },
+  { value: "Instant", label: "Lead Capture" },
+  { value: "After", label: "Hours Coverage" },
+  { value: "More", label: "Conversions" }
+];
+
+const benefits = [
+  "Engages visitors who won't call or fill out a form",
+  "Captures leads after hours when your office is closed",
+  "Collects name, phone, email, and job details",
+  "Answers basic questions about services and service area",
+  "Reduces missed opportunities from website traffic",
+  "Works alongside calls, forms, and Google Ads",
+  "Designed around your business — not a generic setup"
+];
+
+const sections = [
+  {
+    heading: "Meet People Where They Are",
+    body: `
+      <p>Some visitors are ready to call right now. Others are not. Some are at work. Some are browsing late at night. Some do not want to talk yet. Some just want to know whether you serve their area or handle the kind of job they need done.</p>
+      <p>If your website does not give them an easy next step, many of them leave. An AI chatbot gives those visitors a way to interact immediately — without waiting for office hours and without hunting around your website for answers.</p>
+      <p>A growing percentage of leads now begin with chat. Without a chatbot, those people may leave your site without ever becoming a lead. With the right chatbot in place, more of your website traffic has a chance to convert.</p>
+    `
+  },
+  {
+    heading: "Built for Contractors and Local Service Companies",
+    body: `
+      <p>We build AI chatbot systems for businesses that depend on inbound leads — especially local service companies such as HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, gutter companies, and other home service businesses.</p>
+      <p>If your business gets traffic from Google Ads, SEO, Google Maps, direct visits, or referrals, an AI chatbot can help you capture leads that might otherwise disappear.</p>
+    `
+  },
+  {
+    heading: "What an AI Chatbot Can Do",
+    body: `
+      <p>A properly set up chatbot can do much more than just pop up and say hello. Your chatbot can be configured to:</p>
+      <ul>
+        <li><strong>Start Conversations Automatically:</strong> <span>When a visitor lands on the site, the chatbot can invite them to ask a question or get help right away.</span></li>
+        <li><strong>Answer Basic Questions:</strong> <span>The chatbot can respond to common questions about your services, service area, hours, and next steps.</span></li>
+        <li><strong>Screen for Fit:</strong> <span>Not every website visitor is the right lead. The chatbot can help determine whether the person is in your service area and what type of work they need.</span></li>
+        <li><strong>Collect Lead Information:</strong> <span>Your chatbot can gather useful details such as name, phone number, email address, service requested, job details, and timeline.</span></li>
+        <li><strong>Generate Leads After Hours:</strong> <span>A chatbot works when your office is closed, when your team is busy, and when nobody is available to answer right away.</span></li>
+        <li><strong>Support Faster Follow-Up:</strong> <span>Once a lead is captured, the information can be routed so someone can follow up quickly.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "A Good Chatbot Does More Than Sit on the Website",
+    body: `
+      <p>A lot of chat tools look impressive but do not actually help much. They may annoy visitors, ask bad questions, or fail to gather the information your business really needs.</p>
+      <p>We take a more practical approach. We help configure chatbot conversations around your actual business so the chatbot is there to do useful work: engage the visitor, guide the conversation, collect meaningful lead details, reduce friction, and move the person toward contact.</p>
+      <p>That is the difference between a gimmick and a real lead-generation tool.</p>
+    `
+  },
+  {
+    heading: "Designed Around Your Business",
+    body: `
+      <p>We do not believe in generic one-size-fits-all chatbot setups. We build around your services, service area, lead questions, hours, preferred tone, follow-up process, and website goals.</p>
+      <p>That helps the chatbot feel more relevant to your visitors and more useful to your business. We think through how the conversation starts, what questions get asked, what details get captured, how the lead is identified, how follow-up happens, and how chatbot leads are tracked alongside calls and forms.</p>
+      <p>That means the chatbot becomes part of a more organized lead-generation system — not just another widget on the site.</p>
+    `
+  },
+  {
+    heading: "Works Alongside Your Other Lead Systems",
+    body: `
+      <p>Your chatbot should not live on an island. It works best as part of a broader lead generation and lead handling process that may also include <a href="/get-more-leads" class="text-accent font-semibold hover:underline">Google Ads for contractors</a>, contractor website design, <a href="/track-calls-leads" class="text-accent font-semibold hover:underline">contractor lead generation tracking</a>, form tracking, <a href="/answer-my-calls" class="text-accent font-semibold hover:underline">AI answering service</a>, and lead reporting and follow-up systems.</p>
+      <p>An AI chatbot can be especially valuable if you are already investing in getting people to your website — from Google Ads, organic search, Google Business Profile, direct visits, social media, or referrals. If you are paying for traffic or working hard to generate visibility, it makes sense to improve how many of those visitors actually turn into leads.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "Who is a good fit for an AI chatbot?",
+    answer: "Any service business that gets website traffic but wants to convert more of it into leads. It is especially valuable for contractors who run Google Ads, rank in local search, or get traffic from their Google Business Profile — because it gives those visitors an immediate, low-friction way to engage."
+  },
+  {
+    question: "Does the chatbot sound robotic?",
+    answer: "No. It is powered by advanced AI and configured to sound natural and helpful — like a knowledgeable front-desk person, not an automated system. We set it up to represent your business in a tone that fits how you work."
+  },
+  {
+    question: "What happens when someone leaves their contact info?",
+    answer: "The lead is captured and routed for follow-up. You get the visitor's name, contact information, and details about what they need so someone can reach out quickly — before they call someone else."
+  },
+  {
+    question: "Can it capture leads when my office is closed?",
+    answer: "Yes. That is one of the most valuable things a chatbot does. Late-night visitors, weekend browsers, and after-hours inquiries can all become leads instead of missed opportunities."
+  },
+  {
+    question: "How is this different from a basic chat widget?",
+    answer: "A basic chat widget is just a box that waits for someone to type. An AI chatbot actively engages visitors, answers questions, screens for fit, collects lead details, and routes the information — without any staff involvement."
+  },
+  {
+    question: "How does the chatbot fit with our other marketing?",
+    answer: "It fits alongside everything else you are already doing. Google Ads brings people to your site. The chatbot captures the ones who are not ready to call or fill out a form. Call tracking and follow-up systems handle what happens next. Together they create a more complete lead generation process."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "AI Answering Service for Contractors",
+    desc: "For visitors who pick up the phone instead of chatting — an AI receptionist handles calls after hours so no lead ever goes to voicemail.",
+    href: "/answer-my-calls"
+  },
+  {
+    title: "Lead Generation & Tracking",
+    desc: "Track chatbot leads alongside calls and forms in one place — so you always know where your leads are coming from and whether they got followed up.",
+    href: "/track-calls-leads"
+  },
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "Drive more targeted traffic to your site with Google Ads — then convert more of those visitors into leads with your AI chatbot.",
+    href: "/get-more-leads"
+  }
+];
+
+const ctaHeading = "Want to Turn More Website Visitors into Real Leads?";
+const canonicalPath = "/ai-chatbot";
+const metaTitle = "AI Chatbot for Contractor Websites | MicroManaged Media";
+const metaDescription = "Capture leads 24/7 from your contractor website with an AI chatbot. MicroManaged Media builds chatbot systems that engage visitors, answer questions, and collect contact details automatically.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

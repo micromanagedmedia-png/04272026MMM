@@ -1,0 +1,102 @@
+---
+// About.astro
+---
+<section id="about" class="py-24 overflow-hidden relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+      
+      <!-- Visual Left -->
+      <div class="relative mb-16 lg:mb-0">
+        <!-- Badge -->
+        <div class="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-24 h-24 md:w-32 md:h-32 bg-primary text-white rounded-full flex flex-col items-center justify-center rotate-6 shadow-xl shadow-primary/20 z-10 border-4 border-[#020617]">
+          <span class="text-xl md:text-2xl font-black leading-none text-center">25+</span>
+          <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-center px-2">Years Expert</span>
+        </div>
+        
+        <!-- Main Card -->
+        <div class="rounded-3xl bg-[#c59315] border border-border px-8 py-12 md:px-12 md:py-16 flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl mt-8 md:mt-12">
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-xl mb-6 bg-white/20 shrink-0">
+              <img src="/bob-rutledge.jpg" alt="Bob Rutledge" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="text-5xl md:text-6xl font-black text-foreground mb-3 tracking-tight">Bob Rutledge</h3>
+            <p class="text-foreground/60 uppercase tracking-widest text-xs md:text-sm font-bold mb-8">Founder &middot; Micromanaged Media, Inc.</p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-3">
+              <span class="bg-white/10 border border-slate-300 text-foreground text-xs md:text-sm font-medium px-4 py-1.5 rounded-full backdrop-blur-sm">PPC Strategist</span>
+              <span class="bg-white/10 border border-slate-300 text-foreground text-xs md:text-sm font-medium px-4 py-1.5 rounded-full backdrop-blur-sm">Systems Builder</span>
+              <span class="bg-white/10 border border-slate-300 text-foreground text-xs md:text-sm font-medium px-4 py-1.5 rounded-full backdrop-blur-sm">25+ Years</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Bottom Card -->
+        <div class="absolute -bottom-8 left-4 right-4 md:left-8 md:right-auto md:-bottom-10 bg-background border border-border rounded-2xl p-5 shadow-2xl z-10 flex items-start gap-4 mx-auto max-w-sm">
+          <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 border border-primary/20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div>
+            <p class="text-sm font-bold text-foreground mb-1 leading-snug">
+              <a href="https://ads.google.com/intl/en_us/home/tools/partner-badge/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Google Ads Partner</a> &amp; 
+              <br/>
+              <a href="https://about.ads.microsoft.com/en-us/solutions/microsoft-advertising-partners" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Microsoft Advertising Partner</a>
+            </p>
+            <p class="text-xs text-slate-600">Verified expertise &mdash; Google Ads since its first year</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Content Right -->
+      <div class="lg:pl-8 mt-16 md:mt-12 lg:mt-0">
+        <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-3">About the Founder</h3>
+        <h2 class="text-4xl md:text-5xl font-black text-foreground mb-8 tracking-tight">Built by a Contractor Marketing <span class="text-primary">Specialist</span></h2>
+        
+        <div class="space-y-6 text-slate-700 text-lg mb-10 leading-relaxed">
+          <p>
+            Bob Rutledge founded Micromanaged Media, Inc. after 25+ years of hands-on paid advertising experience &mdash; starting long before Google Ads became mainstream. He built his expertise managing campaigns the hard way: manually, methodically, and obsessively focused on one thing &mdash; the phone ringing.
+          </p>
+          <p>
+            Today, MicroManaged Media is not a general marketing agency. It's a lead generation system builder exclusively for local service contractors &mdash; HVAC, plumbing, roofing, electrical, fencing, and home renovation businesses who need more calls, more booked jobs, and more revenue.
+          </p>
+          <p>
+            Bob's philosophy is simple: contractors don't need marketing theory. They need a phone that rings with qualified buyers &mdash; and a system that captures every call that comes in, day or night. That's what we build.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+          <!-- Checks -->
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">Manual campaign optimization &mdash; no "smart bidding" shortcuts</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">Results measured in calls, booked jobs, and revenue</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">Lean, effective systems built for small teams</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">Geographic targeting down to zip code and service area</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">25+ years of hands-on paid search experience</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary flex-shrink-0 mt-0.5"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            <span class="text-sm font-medium text-slate-700">Contracts you can cancel &mdash; no lock-in, ever</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="inline-flex items-center justify-center px-10 py-5 bg-primary hover:bg-amber-600 text-white font-black rounded-full transition-transform hover:scale-95 gap-2 shadow-2xl shadow-primary/20 group">
+          Work With Bob
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

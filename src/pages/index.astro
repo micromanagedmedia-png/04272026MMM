@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import ClientBar from '../components/ClientBar.astro';
+import Services from '../components/Services.astro';
+import Process from '../components/Process.astro';
+import Pricing from '../components/Pricing.astro';
+import About from '../components/About.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FeaturedVideo from '../components/FeaturedVideo.astro';
+import BlogPreview from '../components/BlogPreview.astro';
+import Footer from '../components/Footer.astro';
+
+// React islands (interactive components)
+import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
+import Contact from '../components/Contact';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${APP_URL}/#organization`,
+  name: 'MicroManaged Media, Inc.',
+  alternateName: 'Micromanaged Media',
+  description: 'Lead generation systems for local service contractors — Google Ads management, AI answering, call tracking, contractor websites, and Google Maps optimization. Serving HVAC, plumbing, roofing, electrical, and home service businesses across 50 U.S. markets.',
+  url: APP_URL,
+  telephone: '+12517650333',
+  email: 'bob@micromanagedmedia.com',
+  founder: { '@type': 'Person', name: 'Bob Rutledge' },
+  sameAs: [
+    'https://www.facebook.com/MicroManagedMedia',
+    'https://www.youtube.com/@ButHey_WhatDoIKnow',
+  ],
+  areaServed: { '@type': 'Country', name: 'United States' },
+  knowsAbout: [
+    'Google Ads for contractors',
+    'PPC management',
+    'Lead generation for home services',
+    'Call tracking',
+    'AI answering service',
+    'Contractor website design',
+    'Google Maps optimization',
+    '5-star review generation',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Contractor Marketing Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Google Ads Management for Contractors' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Answering Service' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Call Tracking & Lead Tracking' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Contractor Website Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Google Maps Optimization' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '5-Star Review Generation' } },
+    ],
+  },
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  url: APP_URL,
+  name: 'MicroManaged Media',
+  description: 'Lead generation systems for local service contractors.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${APP_URL}/blog?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<Layout
+  title="MicroManaged Media | Google Ads & Lead Generation for Contractors"
+  description="Lead generation systems built for local service contractors. Google Ads management, AI answering, call tracking, contractor websites & Google Maps optimization. If the phone isn't ringing — we fix that."
+  canonical={APP_URL}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} slot="head" />
+
+  <Navbar />
+  <Hero />
+  <ClientBar />
+  <Services />
+  <Process />
+  <Pricing />
+  <About />
+  <CTABanner />
+
+  <!-- React islands — hydrated on the client -->
+  <Testimonials client:visible />
+  <FeaturedVideo />
+  <FAQ client:load />
+  <BlogPreview />
+  <Contact client:load />
+
+  <Footer />
+</Layout>

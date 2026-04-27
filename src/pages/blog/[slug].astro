@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { blogPosts } from '../../data/blogPosts';
+
+export function getStaticPaths() {
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const title = `${post.title} | MicroManaged Media`;
+const description = post.excerpt;
+const canonicalPath = `/blog/${post.slug}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.title,
+  "description": post.excerpt,
+  "datePublished": post.isoDate,
+  "dateModified": post.isoDate,
+  "url": `https://micromanagedmedia.com/blog/${post.slug}`,
+  "author": {
+    "@type": "Person",
+    "name": post.author,
+    "url": "https://micromanagedmedia.com/#about"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MicroManaged Media",
+    "url": "https://micromanagedmedia.com",
+    "logo": { "@type": "ImageObject", "url": "https://micromanagedmedia.com/logo.png" }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://micromanagedmedia.com/blog/${post.slug}`
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://micromanagedmedia.com" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://micromanagedmedia.com/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://micromanagedmedia.com/blog/${post.slug}` }
+  ]
+};
+
+const renderMarkdown = (text: string) => {
+  let blocks = text.trim().split(/\n\s*\n/);
+  return blocks.map(block => {
+    if (block.startsWith('## ')) {
+        return `<h2 class="text-2xl font-black text-foreground mt-10 mb-4 tracking-tight">${block.replace(/^## /, '')}</h2>`;
+    }
+    if (block.startsWith('### ')) {
+        return `<h3 class="text-lg font-bold text-foreground mt-7 mb-3">${block.replace(/^### /, '')}</h3>`;
+    }
+    if (block.startsWith('- ')) {
+        let items = block.split('\n').filter(l => l.startsWith('- ')).map(l => {
+            let t = l.replace(/^- /, '');
+            t = t.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>');
+            return `<li class="flex gap-2.5"><span class="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0"></span><span class="text-muted-foreground">${t}</span></li>`;
+        });
+        return `<ul class="space-y-3 mb-6">${items.join('\n')}</ul>`;
+    }
+    if (block.startsWith('| ')) {
+      let rows = block.split('\n').filter(l => l.startsWith('|'));
+      let tableHtml = `<div class="overflow-x-auto my-8"><table class="w-full text-left border-collapse">`;
+      rows.forEach((row, rowIndex) => {
+        let cells = row.split('|').map(c => c.trim()).filter(c => c);
+        if (rowIndex === 0) {
+          tableHtml += `<thead class="bg-muted"><tr>${cells.map(c => `<th class="p-3 font-semibold text-foreground border border-border">${c}</th>`).join('')}</tr></thead><tbody>`;
+        } else if (cells.every(c => c.match(/^[-:]+$/))) {
+          // Separator row
+        } else {
+          tableHtml += `<tr class="border-b border-border hover:bg-muted/30">${cells.map(c => `<td class="p-3 text-muted-foreground border border-border">${c}</td>`).join('')}</tr>`;
+        }
+      });
+      tableHtml += `</tbody></table></div>`;
+      return tableHtml;
+    }
+    
+    // Check if it's an HTML block or paragraph
+    let p = block;
+    p = p.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>');
+    return `<p class="text-muted-foreground leading-relaxed text-[1.05rem] mt-4">${p}</p>`;
+  }).join('');
+};
+
+const renderedContent = renderMarkdown(post.content);
+const relatedPosts = blogPosts.filter(p => p.slug !== post.slug).slice(0, 2);
+
+const truncate = (str: string, n: number) => {
+  return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
+};
+---
+
+<Layout title={title} description={description} canonicalPath={canonicalPath}>
+  <!-- Inject SEO Tags if needed -->
+  <meta property="og:type" content="article" slot="head" />
+  <meta property="og:image" content="https://micromanagedmedia.com/og-image.jpg" slot="head" />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} slot="head" />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
+
+  {/* Hero */}
+  <section class="bg-primary pt-32 pb-16 relative overflow-hidden">
+    <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+      
+      <div class="mb-8 flex items-center gap-2 text-foreground/60 text-sm font-medium flex-wrap">
+        <a href="/" class="hover:text-foreground transition-colors">Home</a>
+        <span>&gt;</span>
+        <a href="/blog" class="hover:text-foreground transition-colors">Blog</a>
+        <span>&gt;</span>
+        <span class="text-foreground" set:html={truncate(post.title, 40)}></span>
+      </div>
+
+      <span class="inline-block bg-white/15 text-foreground text-xs font-bold px-3 py-1.5 rounded-full mb-6">
+        {post.category}
+      </span>
+
+      <h1 class="text-3xl md:text-5xl font-black text-foreground tracking-tight leading-tight mb-6">
+        {post.title}
+      </h1>
+
+      <div class="flex items-center gap-6 text-foreground/60 text-sm flex-wrap">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          {post.author}
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          {post.date}
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {post.readTime}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* Content */}
+  <section class="py-14 bg-background">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8">
+      
+      <div class="text-xl text-muted-foreground leading-relaxed border-l-4 border-accent pl-5 mb-8 italic">
+        {post.excerpt}
+      </div>
+
+      <div class="prose-custom" set:html={renderedContent}></div>
+
+      {/* CTA Box */}
+      <div class="mt-14 bg-primary rounded-2xl p-8 text-center shadow-lg relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay pointer-events-none"></div>
+        <div class="relative z-10">
+          <h3 class="text-xl font-black text-white mb-3">Want help putting this into practice?</h3>
+          <p class="text-white/80 text-sm mb-6 max-w-lg mx-auto">
+            We build lead generation systems for HVAC, plumbing, roofing, and electrical contractors.
+          </p>
+          <a href={post.ctaHref || "/#contact"} class="inline-block bg-white hover:bg-gray-100 text-primary font-bold px-7 py-3 rounded-full transition-colors">
+            {post.ctaLabel || "Get a Free Strategy Call"} &rarr;
+          </a>
+        </div>
+      </div>
+
+      {/* Related Posts */}
+      <div class="mt-16 border-t border-border pt-12">
+        <h3 class="text-xl font-black text-foreground mb-6 tracking-tight">More from the Blog</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {relatedPosts.map(rp => (
+            <a href={`/blog/${rp.slug}`} class="block group">
+              <article class="bg-card border border-border group-hover:border-accent/40 group-hover:shadow-md rounded-2xl p-6 transition-all h-full flex flex-col">
+                <span class="inline-block text-xs font-bold px-2.5 py-0.5 rounded-full bg-muted text-muted-foreground mb-4 w-fit">
+                  {rp.category}
+                </span>
+                <h4 class="text-lg font-black text-foreground group-hover:text-primary tracking-tight mb-4 flex-grow">
+                  {rp.title}
+                </h4>
+                <div class="text-accent font-semibold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  Read &rarr;
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+      
+    </div>
+  </section>
+</Layout>

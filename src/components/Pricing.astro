@@ -1,0 +1,139 @@
+---
+const plans = [
+  {
+    name: 'PPC Management',
+    price: '1,500',
+    period: '/month + ad spend',
+    tagline: 'For contractors ready to start generating leads from Google or Bing Ads.',
+    badge: null,
+    features: [
+      'Google Ads or Bing Ads campaign management',
+      'Manual bidding — no automation shortcuts',
+      'Keyword research & negative keyword lists',
+      'Ad copy writing & A/B testing',
+      'Conversion tracking setup',
+      'Monthly performance reporting',
+      'Recommended ad spend: $2,000–$5,000/mo',
+    ],
+    cta: 'Get Started',
+    highlight: false,
+  },
+  {
+    name: 'Full-Stack Lead Gen',
+    price: '3,500',
+    period: '/month + ad spend',
+    tagline: 'The complete lead generation system — PPC, website, call tracking, and CRM.',
+    badge: 'Most Popular',
+    features: [
+      'Google Ads + Bing Ads management',
+      'High-converting contractor landing page',
+      'LeadTable™ call tracking setup',
+      'Airtable CRM configuration',
+      'Make.com automation workflows',
+      'Monthly strategy call with Bob',
+      'Recommended ad spend: $3,000–$8,000/mo',
+      'Priority support & faster response',
+    ],
+    cta: 'Build My System',
+    highlight: true,
+  },
+  {
+    name: 'Enterprise + Gracie',
+    price: 'Custom',
+    period: '',
+    tagline: 'Full-stack lead gen plus our This is Gracie™ AI receptionist — zero missed calls.',
+    badge: 'Full Stack',
+    features: [
+      'Everything in Full-Stack Lead Gen',
+      'This is Gracie™ AI receptionist (24/7)',
+      'Twilio call routing & recording',
+      'Live call transfer to your team',
+      'AI-generated call summaries',
+      'Retell AI voice configuration',
+      'Custom automation workflows',
+      'Dedicated account management',
+    ],
+    cta: 'Contact Us',
+    highlight: false,
+  },
+];
+
+const BOOK_URL = 'https://calendar.app.google/RUTjw3N7Afe95Tkk8';
+---
+
+<section id="pricing" class="py-28 bg-gray-50 dark:bg-gray-900/30">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="text-cyan-500 text-sm font-semibold uppercase tracking-widest">Pricing</span>
+      <h2 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mt-3 mb-4 tracking-tight">
+        Transparent, <span class="text-blue-900 dark:text-blue-400">Performance-Driven</span> Pricing
+      </h2>
+      <p class="text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto">
+        No hidden fees. No long-term lock-in. Every package is built around one goal: profitable calls and booked jobs.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
+      {plans.map((plan) => (
+        <div
+          class={`relative rounded-2xl border flex flex-col overflow-hidden transition-all duration-300 ${
+            plan.highlight
+              ? 'bg-blue-900 border-blue-900 shadow-2xl scale-[1.03]'
+              : 'bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:border-cyan-400/30 hover:shadow-lg'
+          }`}
+        >
+          {plan.badge && (
+            <div class={`text-center py-2 text-xs font-bold uppercase tracking-widest ${plan.highlight ? 'bg-cyan-400 text-gray-900' : 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400'}`}>
+              <svg class="inline w-3 h-3 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+              {plan.badge}
+            </div>
+          )}
+
+          <div class="p-8 flex flex-col flex-1">
+            <div class="mb-6">
+              <h3 class={`text-lg font-bold mb-1 ${plan.highlight ? 'text-white' : 'text-gray-900 dark:text-white'}`}>{plan.name}</h3>
+              <p class={`text-sm leading-relaxed ${plan.highlight ? 'text-white/60' : 'text-gray-500 dark:text-gray-400'}`}>{plan.tagline}</p>
+            </div>
+
+            <div class="mb-8">
+              <span class={`text-5xl font-black tracking-tight ${plan.highlight ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                {plan.price === 'Custom' ? 'Custom' : `$${plan.price}`}
+              </span>
+              {plan.period && (
+                <span class={`text-sm ml-1 ${plan.highlight ? 'text-white/60' : 'text-gray-500 dark:text-gray-400'}`}>{plan.period}</span>
+              )}
+            </div>
+
+            <ul class="space-y-3 mb-8 flex-1">
+              {plan.features.map((f) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-4 h-4 mt-0.5 shrink-0 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <span class={`text-sm ${plan.highlight ? 'text-white/80' : 'text-gray-700 dark:text-gray-300'}`}>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="#contact"
+              class={`w-full rounded-xl py-3 text-center font-semibold transition-colors ${
+                plan.highlight
+                  ? 'bg-cyan-400 hover:bg-cyan-300 text-gray-900'
+                  : 'bg-blue-900 hover:bg-blue-800 text-white'
+              }`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-center text-gray-400 text-sm mt-10">
+      All packages include a free 30-minute strategy call with Bob Rutledge. Cancel anytime — no long-term contracts.
+    </p>
+  </div>
+</section>

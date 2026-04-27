@@ -1,0 +1,332 @@
+---
+// src/layouts/ServicePage.astro
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  tagline: string;
+  iconName?: string;
+  heroStats: { value: string; label: string }[];
+  benefits: string[];
+  ctaHeading: string;
+  metaTitle: string;
+  metaDescription: string;
+  canonicalPath?: string;
+  faqs?: { question: string; answer: string; schemaAnswer: string }[];
+  relatedServices?: { title: string; desc: string; href: string }[];
+}
+
+const {
+  title,
+  subtitle,
+  tagline,
+  iconName,
+  heroStats,
+  benefits,
+  ctaHeading,
+  metaTitle,
+  metaDescription,
+  canonicalPath,
+  faqs,
+  relatedServices
+} = Astro.props;
+
+const schemaData = faqs && faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.schemaAnswer
+    }
+  }))
+} : null;
+
+const schemaText = schemaData ? JSON.stringify(schemaData) : '';
+---
+
+<Layout title={metaTitle} description={metaDescription}>
+  {schemaData && <script type="application/ld+json" set:html={schemaText} />}
+  
+  <Navbar />
+  
+  <main class="bg-background min-h-screen">
+    
+    <!-- HEADER / HERO SECTION -->
+    <section class="relative pt-32 pb-24 overflow-hidden border-b border-border z-10">
+      <!-- Radial gradient background overlay -->
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_hsla(196,94%,40%,0.15)_0%,_transparent_60%)] pointer-events-none -z-10"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        
+        <!-- Breadcrumb -->
+        <div class="flex items-center gap-2 text-sm text-slate-600 font-medium mb-8">
+          <a href="/" class="hover:text-foreground transition-colors">Home</a>
+          <span>&gt;</span>
+          <span class="text-foreground cursor-default">Services</span>
+          <span>&gt;</span>
+          <span class="text-primary cursor-default truncate">{title}</span>
+        </div>
+
+        <div class="max-w-4xl">
+          <!-- Icon & Subtitle -->
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-14 h-14 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary flex-shrink-0 shadow-lg shadow-primary/10">
+              {iconName === 'Phone' ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+              )}
+            </div>
+            <span class="text-primary font-bold uppercase tracking-widest text-sm">{subtitle}</span>
+          </div>
+
+          <!-- Heading -->
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight tracking-tight mb-6">
+            {title}
+          </h1>
+
+          <!-- Tagline -->
+          <p class="text-xl text-foreground/70 leading-relaxed mb-10 max-w-3xl">
+            {tagline}
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="https://calendar.app.google/RUTjw3N7Afe95Tkk8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary hover:bg-amber-600 text-white font-black rounded-lg transition-all hover:scale-95 shadow-xl shadow-primary/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+              Book a Time to Talk
+            </a>
+            <a href="/#contact" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-slate-300 hover:border-white/40 hover:bg-white/5 text-foreground font-bold rounded-lg transition-colors">
+              Get a Free Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Fade -->
+      <div class="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#020617] to-transparent pointer-events-none -z-10"></div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="bg-white/5 border-b border-border backdrop-blur-sm relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/10">
+          {heroStats.map((stat, idx) => (
+            <div class={`p-6 md:p-8 flex flex-col justify-center items-center text-center ${idx < 2 ? 'border-b lg:border-b-0' : ''}`}>
+              <div class="text-3xl md:text-4xl font-black text-primary mb-1">{stat.value}</div>
+              <div class="text-xs font-bold uppercase tracking-widest text-slate-600">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="py-24 relative z-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          
+          <!-- Content Block (2 cols) -->
+          <div class="lg:col-span-2">
+            <div class="prose-custom">
+              <slot />
+            </div>
+          </div>
+
+          <!-- Sticky Sidebar (1 col) -->
+          <div class="lg:col-span-1">
+            <div class="sticky top-32 space-y-8">
+              
+              <!-- Benefits Card -->
+              <div class="bg-white/5 border border-border rounded-2xl p-8 backdrop-blur-md shadow-2xl shadow-black/20">
+                <h3 class="text-xl font-black text-foreground mb-6 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                  Key Benefits
+                </h3>
+                <ul class="space-y-4">
+                  {benefits.map(benefit => (
+                    <li class="flex items-start gap-3">
+                      <div class="w-5 h-5 rounded-full bg-primary/20 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      </div>
+                      <span class="text-slate-700 text-sm font-medium leading-relaxed">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- CTA Card -->
+              <div class="bg-primary rounded-2xl p-8 shadow-xl shadow-primary/10 text-white">
+                <h3 class="text-2xl font-black mb-4 leading-tight tracking-tight">Ready to Get Started?</h3>
+                <p class="font-medium text-white text-base leading-relaxed mb-6">Stop leaving growth on the table. Let's discuss a custom strategy for your business.</p>
+                <a href="/#contact" class="flex items-center justify-center w-full py-4 bg-background text-foreground font-bold rounded-xl transition-transform hover:scale-[0.98] shadow-lg text-lg">
+                  Book Free Consultation
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    {faqs && faqs.length > 0 && (
+      <section class="py-24 bg-white/5 border-t border-border relative z-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-3">Got Questions?</h3>
+            <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tight">Frequently Asked Questions</h2>
+            <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">Straight answers to the questions business owners ask us most.</p>
+          </div>
+
+          <div class="space-y-4" id="service-faq-accordion">
+            {faqs.map((faq) => (
+              <div class="faq-item rounded-xl border border-border bg-background overflow-hidden transition-all duration-300 hover:border-primary/20 data-[open=true]:border-primary/40 data-[open=true]:shadow-lg data-[open=true]:shadow-primary/5 group" data-open="false">
+                <button class="faq-toggle w-full flex items-center justify-between p-6 text-left focus:outline-none" aria-expanded="false">
+                  <span class="font-bold text-foreground text-lg group-data-[open=true]:text-primary transition-colors pr-8">{faq.question}</span>
+                  <span class="flex-shrink-0 w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center text-foreground group-data-[open=true]:text-primary group-data-[open=true]:border-primary/50 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon-plus block group-data-[open=true]:hidden"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="faq-icon-minus hidden group-data-[open=true]:block"><path d="M5 12h14"/></svg>
+                  </span>
+                </button>
+                <div class="faq-content hidden text-slate-700 px-6 pb-6 pt-2 border-t border-border text-sm leading-relaxed space-y-4">
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- RELATED SERVICES -->
+    {relatedServices && relatedServices.length > 0 && (
+      <section class="py-24 bg-background border-t border-border relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-3">Related Services</h3>
+            <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tight">Complete Your Lead System</h2>
+            <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">These services work together with this one &mdash; building a pipeline that captures, handles, and converts more leads.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {relatedServices.map(srv => (
+              <a href={srv.href} class="group flex flex-col h-full bg-white/5 rounded-2xl p-8 border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300">
+                <h3 class="text-xl font-black text-foreground mb-4 leading-tight group-hover:text-primary transition-colors">{srv.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">{srv.desc}</p>
+                <div class="text-primary font-bold text-sm flex items-center gap-1 group-hover:underline underline-offset-4 decoration-primary/50">
+                  Explore this service <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- BOTTOM CTA -->
+    <section class="py-24 bg-white/5 border-t border-border relative z-20 text-center">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl md:text-5xl font-black text-foreground mb-6 tracking-tight">{ctaHeading}</h2>
+        <p class="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto">With 20+ years of experience, MicroManaged Media delivers measurable results &mdash; not just promises.</p>
+        <a href="/#contact" class="inline-flex items-center justify-center px-10 py-5 bg-primary hover:bg-amber-600 text-white font-black rounded-full transition-transform hover:scale-95 shadow-xl shadow-primary/20 text-lg">
+          Start Your Campaign Today &rarr;
+        </a>
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style is:global>
+  /* Custom prose styling for dynamic content slots */
+  .prose-custom h2 {
+    font-size: 1.875rem; /* 3xl */
+    line-height: 1.2;
+    font-weight: 900;
+    color: #ffffff;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+  }
+  .prose-custom h2:first-child {
+    margin-top: 0;
+  }
+  .prose-custom p {
+    color: #94a3b8; /* slate-400 */
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem; /* lg */
+  }
+  .prose-custom a {
+    color: #f59e0b; /* amber-500 */
+    font-weight: 600;
+    text-decoration-line: underline;
+    text-decoration-color: rgba(245, 158, 11, 0.5);
+    text-underline-offset: 4px;
+    transition-property: color, text-decoration-color;
+    transition-duration: 300ms;
+  }
+  .prose-custom a:hover {
+    color: #fbbf24; /* amber-400 */
+    text-decoration-color: rgba(251, 191, 36, 1);
+  }
+  .prose-custom ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  .prose-custom li {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
+<script>
+  // Setup FAQ Accordion logic specific to this layout
+  const serviceFaqItems = document.querySelectorAll('#service-faq-accordion .faq-item');
+  
+  serviceFaqItems.forEach(item => {
+    const btn = item.querySelector('.faq-toggle');
+    const content = item.querySelector('.faq-content');
+    
+    if (btn && content) {
+      btn.addEventListener('click', () => {
+        const isOpen = item.getAttribute('data-open') === 'true';
+        
+        // Close all others
+        serviceFaqItems.forEach(otherItem => {
+           if (otherItem !== item) {
+             otherItem.setAttribute('data-open', 'false');
+             const otherBtn = otherItem.querySelector('.faq-toggle');
+             const otherContent = otherItem.querySelector('.faq-content');
+             if(otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+             if(otherContent) otherContent.classList.add('hidden');
+           }
+        });
+        
+        // Toggle current
+        if (isOpen) {
+          item.setAttribute('data-open', 'false');
+          btn.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+        } else {
+          item.setAttribute('data-open', 'true');
+          btn.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+        }
+      });
+    }
+  });
+</script>

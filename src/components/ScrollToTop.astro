@@ -1,0 +1,32 @@
+---
+// No props needed — pure client-side behavior
+---
+
+<button
+  id="scroll-to-top"
+  aria-label="Scroll to top"
+  class="fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full bg-blue-900 text-white shadow-lg items-center justify-center hover:bg-cyan-500 transition-all duration-200 hidden opacity-0"
+>
+  <svg class="w-5 h-5 mx-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById('scroll-to-top')!;
+
+  const update = () => {
+    if (window.scrollY > 500) {
+      btn.classList.remove('hidden', 'opacity-0');
+      btn.classList.add('flex', 'opacity-100');
+    } else {
+      btn.classList.add('opacity-0');
+      setTimeout(() => {
+        if (window.scrollY <= 500) btn.classList.add('hidden');
+      }, 200);
+    }
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>

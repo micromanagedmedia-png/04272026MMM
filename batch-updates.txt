@@ -1,0 +1,48 @@
+# Batch Updates Log
+# Migration tracker for MicroManaged Media React -> Astro Migration
+
+### Batch 1
+- Core application setup
+- Configured Astro with Tailwind CSS 4.0
+- Migrated global styles and layouts
+- Migrated generic UI components (Buttons, Navbar, Mobile Menu, Footer, Container, SEO components)
+- Generated placeholders (Breadcrumbs)
+- Replicated branding and routing infrastructure
+
+### Batch 2
+- Migrated Home Page (`src/pages/index.astro`)
+- Connected specific components to homepage
+- Replicated hero sections, features, testimonials, CTA, and services
+- Updated image paths to use standard paths
+
+### Batch 3
+- Migrated Blog System
+- Configured `src/data/posts.ts` containing the MDX/Markdown frontmatter payload
+- Created `src/pages/blog/index.astro` (Blog library and grid)
+- Created `src/pages/blog/[slug].astro` (Dynamic rendering of individual blog posts utilizing Astro getStaticPaths)
+
+### Batch 4
+- Migrated Service Pages - Part 1
+- `src/pages/5-star-reviews/index.astro`
+- `src/pages/ai-chatbot/index.astro`
+- `src/pages/answer-my-calls/index.astro`
+- Restructured pages to match standard layout and components
+
+### Batch 5
+- Migrated Service Pages - Part 2
+- `src/pages/contractor-website/index.astro`
+- `src/pages/get-more-leads/index.astro`
+- `src/pages/google-maps/index.astro`
+- `src/pages/track-calls-leads/index.astro`
+
+### Batch 6
+- Miscellaneous internal cleanup
+- Updated Astro configuration to run perfectly with Netlify environment
+- Removed deprecated tailwind integrations matching modern build specifications
+
+### Batch 7
+- Migrated Video System
+- Added `src/data/videos.ts` to manage video meta details
+- Build `src/pages/videos/index.astro` (Video index list)
+- Created `src/pages/videos/[slug].astro` to handle watch pages for videos
+- Added `src/pages/video-sitemap.xml.ts` generating a dynamic video XML sitemap mapped with Google indexing specs

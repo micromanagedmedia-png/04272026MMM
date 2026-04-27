@@ -1,0 +1,147 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Build My Contractor Website";
+const subtitle = "Contractor Website Design";
+const tagline = "A contractor website should do more than sit there and look nice. MicroManaged Media, Inc. builds contractor websites designed to help service businesses generate leads, support advertising, and turn visitors into calls, form fills, and chatbot conversations.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>`;
+
+const heroStats = [
+  { value: "Fast", label: "Page Speed" },
+  { value: "Mobile", label: "First Design" },
+  { value: "Lead", label: "Generation Focus" },
+  { value: "Local", label: "SEO Ready" }
+];
+
+const benefits = [
+  "Generates calls, form fills, and chatbot leads",
+  "Mobile-friendly — most contractor traffic comes from phones",
+  "Clear calls to action that guide visitors to contact you",
+  "Service pages and location pages built in",
+  "AI chatbot integration for after-hours lead capture",
+  "Call tracking compatibility built into the structure",
+  "Designed to work with Google Ads and local search"
+];
+
+const sections = [
+  {
+    heading: "Built for Contractors and Local Service Companies",
+    body: `
+      <p>We build websites for businesses that live and die by inbound leads — HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, gutter companies, garage door companies, and other local service businesses.</p>
+      <p>We understand that a local contractor website is not just an online brochure. It is part of the sales process. And a lot of contractor websites are built like generic templates that may look decent at first glance but are missing the things that actually matter: clear service messaging, strong calls to action, local relevance, mobile usability, conversion paths, and lead capture.</p>
+      <p>We build websites with those real-world needs in mind.</p>
+    `
+  },
+  {
+    heading: "Designed to Help Generate Leads",
+    body: `
+      <p>A good contractor website should make it easy for a visitor to know three things quickly: what you do, where you work, and how to contact you. That sounds simple, but a lot of websites get it wrong.</p>
+      <p>We help structure websites so they guide visitors toward action — whether that action is calling your business, filling out a form, starting a chatbot conversation, requesting an estimate, or learning about a specific service.</p>
+    `
+  },
+  {
+    heading: "What We Build Into Contractor Websites",
+    body: `
+      <p>Depending on your business and goals, your website may include:</p>
+      <ul>
+        <li><strong>Service Pages:</strong> <span>Pages focused on the core services you want to promote.</span></li>
+        <li><strong>Location Pages:</strong> <span>Pages that help support visibility in the cities and service areas you actually want to target.</span></li>
+        <li><strong>Strong Calls to Action:</strong> <span>Clear prompts that make it easy for visitors to take the next step.</span></li>
+        <li><strong>Mobile-Friendly Layout:</strong> <span>Most contractor traffic now comes from phones. Your site needs to work well on mobile.</span></li>
+        <li><strong>Lead Capture Forms:</strong> <span>Simple forms that make it easier for prospects to reach out.</span></li>
+        <li><strong>AI Chatbot Integration:</strong> <span>A chatbot can help capture leads from visitors who do not want to call or fill out a form.</span></li>
+        <li><strong>Call Tracking Compatibility:</strong> <span>Your site can support call tracking so you have better visibility into where leads came from.</span></li>
+        <li><strong>Fast, Clean Structure:</strong> <span>A cleaner structure helps users navigate the site and supports better performance.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "More Than Just a Pretty Design",
+    body: `
+      <p>There are plenty of people who can make a website look attractive. That is not enough.</p>
+      <p>We focus on websites that help contractors and service businesses perform better as marketing tools. That means we think about the site through the lens of lead generation, local search visibility, Google Ads traffic, phone call conversion, trust building, user behavior, and follow-up opportunities.</p>
+      <p>The goal is not just design. The goal is results.</p>
+    `
+  },
+  {
+    heading: "Good Contractor Websites Build Trust Fast",
+    body: `
+      <p>When someone lands on your site, they are making quick judgments. They want to know: are you a real business, do you offer the service they need, do you work in their area, do you look credible, and is there an easy way to contact you.</p>
+      <p>A good website helps answer those questions quickly and clearly. A lot of business owners spend money driving traffic to a weak website — that creates friction and lost opportunities. If you are running ads, building your Google Business Profile, improving SEO, or trying to grow your lead volume, your website needs to pull its weight.</p>
+    `
+  },
+  {
+    heading: "Built to Work with Your Marketing",
+    body: `
+      <p>A contractor website should not be isolated from the rest of your lead system. It should work together with Google Ads, Google Business Profile visibility, call tracking, form tracking, chatbot lead capture, AI receptionist service, and ongoing reporting.</p>
+      <p>That is a major advantage of working with MicroManaged Media. We do not just think like web designers. We think about how the website fits into your entire lead-generation process. Because we also work in Google Ads, lead tracking, AI chatbots, and AI phone answering, we build websites with the full marketing picture in mind.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "What makes a contractor website different from a regular business website?",
+    answer: "A contractor website needs to convert local traffic quickly — people searching for a plumber or HVAC company are often ready to hire right now. That means clear service messaging, strong calls to action, mobile usability, fast load times, and lead capture built into the structure from day one."
+  },
+  {
+    question: "How long does a new website take to build?",
+    answer: "Most contractor websites are live within 2–3 weeks. We handle the structure, copywriting, service pages, mobile layout, call tracking compatibility, and chatbot integration so you do not have to manage multiple vendors."
+  },
+  {
+    question: "Can you redesign my existing website?",
+    answer: "Yes. If your current site is outdated, slow, or not converting visitors into leads, a redesign may produce better ROI than continuing to drive traffic to a weak site. We will assess what you have and recommend the right approach."
+  },
+  {
+    question: "Will the website work with my Google Ads campaigns?",
+    answer: "Absolutely. We build with Google Ads compatibility in mind — service-specific pages, fast load times, strong above-the-fold messaging, and proper conversion tracking support. A better-aligned landing page improves ad performance and lowers your cost per lead."
+  },
+  {
+    question: "Do I own my website?",
+    answer: "Yes. You own everything — the domain, the content, and the files. We build it, you own it."
+  },
+  {
+    question: "Can the website include a chatbot?",
+    answer: "Yes. We can integrate an AI chatbot into your website to capture leads from visitors who are not ready to call or fill out a form. This is especially valuable for after-hours traffic and visitors who are still in the decision-making process."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "Drive qualified traffic to your new site with manually managed Google Ads campaigns — so your website starts generating leads from day one.",
+    href: "/get-more-leads"
+  },
+  {
+    title: "AI Integration for Contractors",
+    desc: "Add an AI chatbot to your site that captures leads after hours — turning more of your website traffic into real opportunities.",
+    href: "/ai-chatbot"
+  },
+  {
+    title: "Lead Generation & Tracking",
+    desc: "Track every call, form fill, and chatbot lead your site generates — so you know exactly what's working and where your leads come from.",
+    href: "/track-calls-leads"
+  }
+];
+
+const ctaHeading = "Need a Contractor Website That Helps Generate Calls, Form Leads, and Chatbot Leads?";
+const canonicalPath = "/contractor-website";
+const metaTitle = "Contractor Website Design | MicroManaged Media";
+const metaDescription = "MicroManaged Media builds contractor websites designed to generate leads — not just look nice. Mobile-first, fast, with service pages, location pages, chatbot integration, and call tracking built in.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

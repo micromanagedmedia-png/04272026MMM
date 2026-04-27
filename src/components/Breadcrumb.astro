@@ -1,0 +1,58 @@
+---
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  /**
+   * "dark"  = white text — use on dark/primary hero backgrounds
+   * "light" = muted text — use on white/light backgrounds
+   */
+  variant?: 'dark' | 'light';
+  class?: string;
+}
+
+const { items, variant = 'dark', class: className = '' } = Astro.props;
+const isDark = variant === 'dark';
+
+const linkClass = isDark
+  ? 'text-white/50 hover:text-white transition-colors'
+  : 'text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors';
+
+const currentClass = isDark
+  ? 'text-white/80 font-medium'
+  : 'text-gray-700 dark:text-gray-200 font-medium';
+
+const sepClass = isDark ? 'text-white/25' : 'text-gray-300 dark:text-gray-600';
+---
+
+<nav aria-label="Breadcrumb" class={`flex items-center flex-wrap gap-1 text-sm ${className}`}>
+  <!-- Always start with Home -->
+  <a href="/" class={`flex items-center gap-1 ${linkClass}`}>
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+    </svg>
+    <span>Home</span>
+  </a>
+
+  {items.map((item, i) => {
+    const isLast = i === items.length - 1;
+    const label = item.label.length > 48 ? item.label.slice(0, 48) + '…' : item.label;
+    return (
+      <span class="flex items-center gap-1">
+        <svg class={`w-3.5 h-3.5 shrink-0 ${sepClass}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+        {isLast || !item.href ? (
+          <span class={isLast ? currentClass : linkClass} aria-current={isLast ? 'page' : undefined}>
+            {label}
+          </span>
+        ) : (
+          <a href={item.href} class={linkClass}>{label}</a>
+        )}
+      </span>
+    );
+  })}
+</nav>

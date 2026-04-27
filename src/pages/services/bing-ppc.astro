@@ -1,0 +1,128 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const localMarketsCallout = `
+<a href="/services/bing-ppc-locations"
+   class="group flex items-start gap-4 bg-primary/5 border border-primary/20 hover:border-accent/40 hover:bg-accent/5 rounded-2xl p-5 transition-all duration-200 mt-2">
+  <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
+    <svg class="w-5 h-5 text-primary group-hover:text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>
+  </div>
+  <div>
+    <div class="font-bold text-foreground text-sm mb-1 group-hover:text-accent transition-colors">
+      Serving America's Top 50 Markets — Bing City Pages →
+    </div>
+    <p class="text-muted-foreground text-sm leading-relaxed">
+      We run geo-targeted Bing PPC campaigns across all 50 major U.S. metros — from New York and Los Angeles to Nashville and Albuquerque. See Bing CPC ranges, LinkedIn opportunity ratings, and local strategies for every market.
+    </p>
+  </div>
+</a>`;
+
+const sections = [
+  {
+    heading: "The Bing PPC Opportunity Most Businesses Are Ignoring",
+    body: `<p>While most of your competitors are fighting over Google's increasingly crowded and expensive auction, Microsoft Advertising (formerly Bing Ads) represents one of the most underleveraged opportunities in digital marketing today. Bing powers search across Microsoft Bing, Yahoo, AOL, DuckDuckGo, and dozens of partner sites — reaching over 63 million users that simply don't use Google as their primary search engine. That's not a small audience. That's a massive, largely untapped pool of high-intent buyers.</p>
+<p>MicroManaged Media has been managing Bing PPC campaigns since the platform's inception. We understand both its unique strengths and its differences from Google Ads, and we use that expertise to build campaigns that capture this valuable audience segment at a fraction of the cost. If you're currently only running Google Ads, you're leaving significant revenue on the table every single day.</p>
+${localMarketsCallout}`,
+  },
+  {
+    heading: "Who's Searching on Bing? Your Best Customers.",
+    body: `<p>The Bing search audience skews older, more affluent, and more educated than the average Google user. According to Microsoft's own data, 37% of the Bing audience has a household income over $100,000, and Bing users are 32% more likely to be in a management role. For B2B companies, professional services, financial advisors, healthcare providers, luxury brands, and home improvement businesses, this demographic is extraordinarily valuable.</p>
+<p>Microsoft Advertising also offers a feature no other search platform can match: LinkedIn Profile Targeting. You can layer your search campaigns with LinkedIn demographic data — targeting searchers by job title, industry, company size, or seniority level. For B2B advertisers, this is a game-changer that allows you to combine the intent signals of search with the precision targeting of LinkedIn at search-level CPCs.</p>
+<p>Average CPCs on Bing typically run 20–40% lower than equivalent Google campaigns, meaning your budget goes significantly further. For competitive industries like legal, insurance, financial services, and home services — where Google CPCs can reach $30–$100+ per click — Bing offers the same purchase-intent audience at dramatically reduced costs.</p>`,
+  },
+  {
+    heading: "Our Microsoft Advertising Management Approach",
+    body: `<p>Many agencies treat Bing as an afterthought — simply importing their Google campaigns and calling it done. We take a fundamentally different approach. While we absolutely leverage the Google Ads import feature to accelerate launch, we then spend significant time optimizing campaigns specifically for the Microsoft ecosystem: adjusting bids to reflect Bing's unique auction dynamics, refining audiences to take advantage of LinkedIn targeting, and tailoring ad copy to resonate with the Bing demographic.</p>
+<p>We manage the full campaign spectrum on Microsoft Advertising: Search campaigns, Bing Shopping / Product Ads for e-commerce clients, Dynamic Search Ads, Display and native advertising through the Microsoft Audience Network, and audience remarketing campaigns. Our team stays current with every Microsoft Advertising product update and beta feature so our clients are always ahead of the curve.</p>`,
+  },
+  {
+    heading: "Integrated Reporting Across Google and Bing",
+    body: `<p>One of the most powerful aspects of running both Google and Bing PPC campaigns is the ability to compare, contrast, and leverage insights from both platforms. We provide unified reporting dashboards that give you a complete cross-platform view of your paid search performance — making it easy to understand total reach, blended ROAS, and how each platform contributes to your overall marketing mix.</p>
+<p>Our conversion tracking setup ensures every phone call, form submission, and transaction is attributed correctly across both platforms. You'll know exactly what's working, on which platform, at what cost. Our 20+ years of paid search experience means we can identify patterns, anomalies, and opportunities that less experienced teams simply miss. With MicroManaged Media managing your Bing PPC, you get a genuine competitive advantage in a channel your rivals are routinely neglecting.</p>`,
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is Bing (Microsoft) PPC advertising?',
+    answer: "Bing PPC — now called Microsoft Advertising — works exactly like Google Ads: you bid to appear at the top of Bing search results when someone searches for your service, and you only pay when they click. What makes it different is the audience. Bing reaches over 63 million searchers who don't use Google as their primary engine — many of them older, higher-income, and statistically more likely to be decision-makers and buyers.",
+  },
+  {
+    question: 'How fast can Bing Ads generate leads for my business?',
+    answer: "Like Google Ads, Microsoft Advertising campaigns can start driving calls and form submissions within 24–72 hours of launch. Approval times are typically fast. For businesses already running Google Ads, we can import and adapt your campaigns to Bing in a matter of days — cutting launch time significantly while still customizing bids and messaging for the Bing audience.",
+  },
+  {
+    question: 'Is Bing advertising worth it compared to Google Ads?',
+    answer: "Absolutely — especially if you're in a competitive industry. Bing CPCs typically run 20–40% lower than Google for equivalent keywords. That means your budget goes further and your cost per lead is often significantly lower. In industries like legal, insurance, financial services, and home services where Google CPCs can hit $30–$100+ per click, Bing delivers the same purchase-intent audience at a fraction of the cost. We recommend running both platforms together for maximum coverage and the lowest blended cost per lead.",
+  },
+  {
+    question: "Why are some of my Bing clicks not converting into customers?",
+    answer: "The same rules apply as any PPC platform — poor keyword targeting, weak ad copy, or sending traffic to a generic website page will kill conversion rates. Many advertisers also make the mistake of just importing their Google campaigns without adjusting for Bing's different audience and auction dynamics. We build and optimize specifically for Bing, not just copy-paste from Google, which is why our clients see stronger CPLs on this platform.",
+  },
+  {
+    question: 'What is LinkedIn Profile Targeting and why does it matter for Bing?',
+    answer: "Microsoft Advertising has a unique feature no other search platform offers: you can layer LinkedIn demographic data onto your search campaigns — targeting by job title, industry, company size, or seniority. For B2B companies and professional services, this means you're not just bidding on a search query — you're reaching a CFO or a Procurement Director at a mid-size firm when they search for exactly what you offer. It's a powerful combination that doesn't exist on Google.",
+  },
+  {
+    question: 'How do I track whether Bing Ads is producing real results?',
+    answer: "We set up full conversion tracking across Microsoft Advertising — phone calls with dynamic tracking numbers, form submissions, and e-commerce transactions. You'll see exactly which keywords and ads are driving leads and at what cost per conversion. We also provide unified reporting dashboards that show your Google and Bing performance side-by-side, so you always have a clear picture of your total paid search ROI and the contribution of each platform.",
+  },
+  {
+    question: 'Should I run Bing Ads on manual or automated bidding?',
+    answer: "Similar to our approach on Google, we favor manual bidding and enhanced CPC strategies for local service campaigns on Bing. Microsoft's automated bidding has improved, but it still tends to optimize for click volume over lead quality. For local businesses where every lead matters, we maintain tight bidding control — prioritizing high-intent queries and protecting budget from irrelevant traffic — especially as campaigns are getting started and building data.",
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Google PPC Advertising',
+    desc: "Run both platforms for maximum coverage. While Bing reaches the searchers Google misses, Google captures the broadest possible audience at full market reach.",
+    href: '/services/google-ppc',
+  },
+  {
+    title: 'CRM & Marketing Automation',
+    desc: 'Every Bing lead gets tracked and followed up automatically. Airtable + Make.com workflows ensure no lead from either platform ever falls through the cracks.',
+    href: '/services/crm-implementation',
+  },
+  {
+    title: 'This is Gracie™ — AI Receptionist',
+    desc: "Answer every call your Bing ads generate — 24/7. Gracie captures lead details and transfers hot calls to your team immediately.",
+    href: '/services/ai-automation',
+  },
+];
+---
+
+  <ServicePageLayout
+    title="Bing PPC Advertising"
+    subtitle="Microsoft Advertising Management"
+    tagline="The underutilized platform most contractors ignore — reaching 63 million searchers Google can't touch, at 25–40% lower CPCs, with older homeowner demographics that match your best customers perfectly."
+    iconSvg='<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 20V10M12 20V4M6 20v-6"/></svg>'
+    heroStats={[
+      { value: '25+', label: 'Years Experience' },
+      { value: '37%', label: 'Lower Avg. CPC' },
+      { value: '63M+', label: 'Exclusive Searchers' },
+      { value: '4.8x', label: 'Avg. ROAS' },
+    ]}
+    benefits={[
+      'Microsoft Advertising certified partner',
+      'Full account setup & migration',
+      'LinkedIn profile targeting',
+      'Lower cost-per-click than Google',
+      'Older, higher-income audience reach',
+      'Import & sync from Google Ads',
+      'Bing Shopping campaign management',
+      'Cross-platform attribution reporting',
+    ]}
+    sections={sections}
+    ctaHeading="Stop Leaving Bing Revenue on the Table"
+    faqs={faqs}
+    relatedServices={relatedServices}
+    canonicalPath="/services/bing-ppc"
+    metaTitle="Bing PPC for Contractors | Microsoft Ads Management"
+    metaDescription="Reach 63 million affluent searchers Google misses. We manage Bing Ads for contractors, driving high-intent leads at 25-40% lower CPCs. Book a consultation."
+  />

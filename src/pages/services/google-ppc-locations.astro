@@ -1,0 +1,281 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+import { ppcMarkets } from '../../data/ppcMarkets';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const stats = [
+  { value: '50', label: 'U.S. Markets Served' },
+  { value: '20+', label: 'Years Experience' },
+  { value: '6.2x', label: 'Average ROAS' },
+  { value: '$5M+', label: 'Ad Spend Managed' },
+];
+
+const whyLocal = [
+  {
+    title: 'Hyper-Local Keyword Strategy',
+    desc: "We build geo-modified keyword lists specific to each market — targeting 'Google PPC agency [city]', '[city] pay-per-click management', and hundreds of local intent variations that competitors overlook.",
+  },
+  {
+    title: 'Local Competitor Intelligence',
+    desc: "Every market has its own competitive landscape. We analyze local auction dynamics, identify gaps in competitor ad strategies, and position your ads to dominate the local search results page.",
+  },
+  {
+    title: 'City-Specific Ad Copy & Landing Pages',
+    desc: "Generic ads don't win in local markets. We write city-specific headlines, descriptions, and callouts — and build geo-targeted landing pages that speak directly to each market's unique audience.",
+  },
+  {
+    title: 'Local Call Tracking & Attribution',
+    desc: "We assign dedicated tracking numbers for each metro area so you know exactly which cities are generating your best leads, at what cost per acquisition, and which deserve more budget.",
+  },
+];
+
+const industries = [
+  { name: 'HVAC & Air Conditioning', slug: 'hvac' },
+  { name: 'Plumbing & Drain Services', slug: 'plumbing' },
+  { name: 'Roofing & Gutters', slug: 'roofing' },
+  { name: 'Electricians & Electrical Contractors', slug: 'electricians' },
+  { name: 'Fence Installation & Repair', slug: 'fence-contractors' },
+  { name: 'Kitchen & Bathroom Remodeling', slug: 'remodeling' },
+  { name: 'General Contractors & Renovation', slug: 'general-contractors' },
+  { name: 'Landscaping & Lawn Care', slug: 'landscaping' },
+  { name: 'Concrete & Masonry', slug: 'concrete-masonry' },
+  { name: 'Painting Contractors', slug: 'painting' },
+  { name: 'Pest Control Services', slug: 'pest-control' },
+  { name: 'Garage Door Installation & Repair', slug: 'garage-doors' },
+];
+---
+
+<Layout
+  title="Google PPC Advertising Across America's Top 50 Markets | MicroManaged Media"
+  description="MicroManaged Media delivers precision-targeted Google PPC campaigns in every major U.S. metro. 20+ years of local paid search experience across all 50 of the largest advertising markets in the country."
+  canonical={`${APP_URL}/services/google-ppc-locations`}
+>
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative bg-[#0a1628] pt-32 pb-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 70% 40%, hsl(196 94% 40%) 0%, transparent 55%);"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <Breadcrumb
+        items={[{ label: 'Services' }, { label: 'Google PPC', href: '/services/google-ppc' }, { label: 'All Markets' }]}
+        variant="dark"
+        class="mb-8"
+      />
+      <div class="max-w-4xl">
+        <div class="w-14 h-14 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6"/>
+          </svg>
+        </div>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest">Geo-Targeted Google PPC</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white mt-3 mb-5 tracking-tight leading-tight">
+          Google PPC Advertising<br />
+          <span class="text-cyan-400">Across America's Top 50 Markets</span>
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed max-w-3xl">
+          MicroManaged Media delivers precision-targeted Google Pay-Per-Click campaigns in every major U.S. metro market. With 20+ years of paid search experience, we know how to win local auctions, dominate city-specific search results, and turn local clicks into paying customers — in every one of the 50 largest advertising markets in the country.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/#contact" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-8 py-3.5 rounded-full transition-colors">
+            Get a Free Local PPC Audit
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/services/google-ppc" class="inline-flex items-center gap-2 text-white bg-cyan-600 hover:bg-cyan-500 rounded-full px-8 py-3.5 font-semibold transition-colors">
+            View Full Google PPC Service
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-gray-50 dark:bg-gray-900/40 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 dark:divide-gray-700">
+        {stats.map((s) => (
+          <div class="py-6 px-4 text-center">
+            <div class="text-2xl md:text-3xl font-black text-blue-900 dark:text-blue-400">{s.value}</div>
+            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-20 bg-white dark:bg-gray-950">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+        Local Google PPC That Wins in <span class="text-blue-900 dark:text-blue-400">Your Market</span>
+      </h2>
+      <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+        <p>Google PPC advertising is not one-size-fits-all. The competitive landscape in New York City looks nothing like the auction dynamics in Salt Lake City. CPCs in Miami's legal sector dwarf what you'll pay for the same keyword in Albuquerque. Consumer behavior, local search intent, peak activity hours, and competitive density vary dramatically from one metro market to the next. A Google Ads strategy that ignores these local variables is a strategy that wastes budget.</p>
+        <p>At MicroManaged Media, local market expertise is at the core of everything we do. For over 20 years, we've been managing Google PPC campaigns across America's largest and most competitive advertising markets — from the towering CPCs of Manhattan and Los Angeles to the emerging digital landscapes of Nashville and Austin. We understand the nuances of each market: who's searching, what they're searching for, which competitors are spending heavily, and exactly where the arbitrage opportunities lie.</p>
+        <p>Our geo-targeted Google PPC approach combines city-specific keyword strategies, locally-resonant ad creative, dedicated landing pages for each market, and granular location-based bidding adjustments that ensure your budget is working hardest where your best customers are searching.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why local matters -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900/20 border-y border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-3">
+          Why <span class="text-blue-900 dark:text-blue-400">Local PPC Expertise</span> Changes Everything
+        </h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+          The difference between a generic national campaign and a locally-optimized PPC strategy can mean 2–4x better return on ad spend.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {whyLocal.map((item) => (
+          <div class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/30 hover:shadow-md transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Directory -->
+  <!-- Note: Removing x-data so it renders plain list without alpine unless needed, falling back to basic display -->
+  <section class="py-20 bg-white dark:bg-gray-950" id="markets">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-3">
+          Our <span class="text-blue-900 dark:text-blue-400">Target Markets</span>
+        </h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-6">
+          Ranked by market size. We manage winning Google PPC campaigns in every one of these major U.S. advertising markets.
+        </p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 max-w-7xl mx-auto">
+        {ppcMarkets.map((market) => (
+          <a
+            href={`/services/google-ppc/${market.slug}`}
+            class="group flex items-start justify-between gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 hover:shadow-md rounded-xl p-4 transition-all duration-200 h-full"
+          >
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-400 text-xs font-black flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-cyan-50 dark:group-hover:bg-cyan-900/10 group-hover:text-cyan-500 transition-colors">
+                {market.rank}
+              </span>
+              <div>
+                <div class="font-semibold text-sm text-gray-900 dark:text-white leading-tight group-hover:text-cyan-500 transition-colors">{market.city}</div>
+                <div class="text-xs text-gray-400 mt-0.5">{market.state} Market</div>
+              </div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 group-hover:text-cyan-400 transition-colors shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900/20 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span class="text-cyan-500 text-sm font-semibold uppercase tracking-widest">Trades We Serve</span>
+            <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mt-3 mb-5 tracking-tight">
+              Built for <span class="text-blue-900 dark:text-blue-400">Local Contractors & Trades</span>
+            </h2>
+            <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+              We specialize exclusively in blue collar service businesses — contractors, tradespeople, and home service pros who live and die by the phone ringing. We understand the seasonal swings, the high-intent search terms, and the tight margins that define the trades — and we build Google Ads campaigns that fill your schedule, not your inbox with junk leads.
+            </p>
+            <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+              Whether you're an HVAC company in Phoenix chasing emergency AC calls in July, a roofing contractor in Dallas after storm-damaged homes, or a plumber in Chicago who needs the phone ringing year-round — we know your business and we know how to win your market on Google.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            {industries.map((ind) => (
+              <a href={`/industries/${ind.slug}`} class="group flex items-center gap-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 rounded-xl px-4 py-3 transition-all duration-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+                <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-cyan-500 transition-colors">{ind.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep SEO content -->
+  <section class="py-20 bg-white dark:bg-gray-950">
+    <div class="container mx-auto px-6 max-w-4xl space-y-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-5 tracking-tight">
+          How We Win Google PPC Campaigns in <span class="text-blue-900 dark:text-blue-400">Competitive Local Markets</span>
+        </h2>
+        <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+          <p>Every market on our list presents a unique competitive challenge. In markets like New York, Los Angeles, and Chicago — where CPCs regularly exceed $20–$50 in competitive verticals — winning requires surgical precision in keyword selection, Quality Score optimization, and landing page design. In mid-tier markets like Indianapolis, Salt Lake City, or Albuquerque, the opportunities often lie in the long tail: thousands of local intent keywords that larger national advertisers ignore, available at efficient CPCs that deliver outstanding ROI.</p>
+          <p>Our market entry process for each geo begins with a full competitive audit: we analyze who's advertising in your category in that specific market, what their ad copy looks like, which keywords they're bidding on, and where their strategies have weaknesses we can exploit. We then build a market-specific campaign architecture from the ground up — including dedicated ad groups for city-specific terms, local extensions, and hyper-local negative keyword lists that prevent your budget from being consumed by irrelevant adjacent searches.</p>
+          <p>For national and multi-location businesses, our portfolio management approach allows us to run coordinated campaigns across all 50 markets simultaneously — with consistent brand messaging and strategy, but locally-adapted execution in each metro. The result is a Google Ads portfolio that performs not just in the aggregate, but in every individual market where you compete.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-5 tracking-tight">
+          Transparent Reporting for Every <span class="text-blue-900 dark:text-blue-400">Market You're In</span>
+        </h2>
+        <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+          <p>Managing Google PPC across multiple geographic markets requires sophisticated reporting infrastructure — and we've built it. Our clients receive market-level performance dashboards that break down impressions, clicks, conversions, cost-per-lead, and ROAS for each individual metro area. You'll know instantly which markets are delivering your best ROI, which are underperforming relative to their potential, and exactly what we're doing to optimize each one.</p>
+          <p>We integrate call tracking with geographic attribution so that every phone call from every city is properly credited to the campaign and keyword that drove it. This data feeds a continuous optimization loop: we're always reallocating budget toward the highest-performing markets, refreshing ad creative, testing new landing page variations, and expanding into new keyword territories as opportunities emerge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#0a1628] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(ellipse at 50% 100%, hsl(196 94% 40%) 0%, transparent 60%);"></div>
+    <div class="container mx-auto px-6 text-center max-w-2xl relative">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+        <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        Free Local PPC Audit — No Obligation
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+        Ready to Dominate Google Search<br />in Your Local Market?
+      </h2>
+      <p class="text-white/60 text-lg mb-8 leading-relaxed">
+        Tell us which markets you're targeting and we'll build a free, customized local PPC strategy showing you exactly how to win.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-10 py-4 rounded-full transition-colors">
+          Get My Free Market Audit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/services/google-ppc" class="inline-flex items-center justify-center gap-2 text-white bg-cyan-600 hover:bg-cyan-500 rounded-full px-10 py-4 font-semibold transition-colors">
+          View Google PPC Service
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-white/40 text-xs uppercase tracking-widest">
+        <span>✓ Markets Covered</span>
+        <span>✓ 20+ Years Experience</span>
+        <span>✓ No Long-Term Contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <ScrollToTop />
+</Layout>

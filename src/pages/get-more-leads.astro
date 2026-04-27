@@ -1,0 +1,149 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Contractor Lead Generation Services | Get More Leads";
+const subtitle = "Google Ads for Contractors";
+const tagline = "Put your business in front of people who are ready to call. MicroManaged Media, Inc. builds and manages Google Ads campaigns with one goal in mind: make the phone ring and help generate profitable jobs.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>`;
+
+const heroStats = [
+  { value: "6.2x", label: "Average ROAS" },
+  { value: "$5M+", label: "Ad Spend Managed" },
+  { value: "25+", label: "Years Experience" },
+  { value: "50", label: "U.S. Markets" }
+];
+
+const benefits = [
+  "Phone calls, form fills, and chatbot leads — not vanity metrics",
+  "Buyer-intent keywords that signal real purchase intent",
+  "Geographic precision — no wasted spend outside your service area",
+  "Separate campaigns for each service type",
+  "Conversion tracking tied to real leads",
+  "Ongoing optimization — never set-it-and-forget-it",
+  "No long-term contracts"
+];
+
+const sections = [
+  {
+    heading: "Google Ads for Contractors and Local Service Companies",
+    body: `
+      <p>A lot of ad agencies talk about impressions, reach, and brand awareness. That may sound impressive, but most local contractors care about something simpler.</p>
+      <p>You want leads. You want calls, form fills, and chatbot leads from people in your service area who are looking for the work you do. That is where we focus.</p>
+      <p>We manage Google Ads for businesses such as HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, garage door companies, gutter companies, and other home service businesses. If your business depends on inbound leads, we help make your ad dollars work harder.</p>
+    `
+  },
+  {
+    heading: "We Focus on Lead Generation, Not Vanity Metrics",
+    body: `
+      <p>Getting clicks is easy. Getting the right clicks is harder.</p>
+      <p>A campaign can look busy on paper and still waste money. That is why we focus on the things that matter: phone calls, form fill leads, chatbot leads, qualified traffic, strong local intent, cost control, and better conversion performance.</p>
+      <p>We are not interested in bloated campaigns that make reports look fancy while draining your budget. We care about whether your advertising is helping you win more work.</p>
+    `
+  },
+  {
+    heading: "Our Approach to Google Ads Management",
+    body: `
+      <p>Every campaign is built around how local service buyers actually search. That means we pay attention to:</p>
+      <ul>
+        <li><strong>Search Intent:</strong> <span>We target the keywords and searches that show buying intent, not random traffic.</span></li>
+        <li><strong>Service Relevance:</strong> <span>We align ads and landing pages to the specific service being searched — AC repair, water heater replacement, fence installation, hardwood refinishing, and more.</span></li>
+        <li><strong>Geographic Precision:</strong> <span>We focus on your service area so your budget is not wasted on people outside the places you want to work.</span></li>
+        <li><strong>Call-Driven Strategy:</strong> <span>For many contractors, the phone call is the lead. We structure campaigns around generating calls from serious prospects.</span></li>
+        <li><strong>Conversion Tracking:</strong> <span>We help track what happens after the click so you are not guessing which leads came from your ads.</span></li>
+        <li><strong>Ongoing Optimization:</strong> <span>Campaigns are not set-it-and-forget-it. We monitor search terms, ad performance, lead flow, spending, and campaign structure to keep refining results.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "Not All Clicks Are Equal",
+    body: `
+      <p>Some clicks waste money. Some clicks turn into profitable jobs.</p>
+      <p>The difference usually comes down to strategy, keyword control, location control, messaging, and what happens after the visitor lands on your site. That is why good Google Ads management is not just about turning on a campaign — it is about building a tighter system from search to lead.</p>
+      <p>Many service companies have been burned by agencies that send monthly reports full of charts but cannot answer basic questions like: Did the campaign produce calls? Were the calls any good? Which services are pulling their weight? Are we paying for junk traffic? Are the leads turning into real opportunities?</p>
+      <p>We build around those questions because we understand inbound lead flow and care about what happens after the click.</p>
+    `
+  },
+  {
+    heading: "Google Ads Works Best When the Whole System Is Connected",
+    body: `
+      <p>The ad is only part of the story. A strong lead generation system also includes a conversion-focused website or landing page, <a href="/track-calls-leads" class="text-accent font-semibold hover:underline">contractor lead generation tracking</a>, form tracking, chatbot lead capture, fast follow-up, good phone answering, and clear reporting.</p>
+      <p>That is why pairing Google Ads with an <a href="/answer-my-calls" class="text-accent font-semibold hover:underline">AI answering service for contractors</a> is so effective — every dollar you spend on ads is protected by a system that answers every call. And with <a href="/ai-chatbot" class="text-accent font-semibold hover:underline">AI chatbot integration</a>, website visitors who are not ready to call still become leads.</p>
+      <p>That is one reason our Google Ads work fits so well with the other services we offer. We do not just try to get the click. We help you improve what happens before, during, and after the lead comes in.</p>
+    `
+  },
+  {
+    heading: "Why Businesses Hire MicroManaged Media",
+    body: `
+      <p>We are not generalists trying to manage every type of marketing for every type of company. We specialize in lead generation for service businesses — especially contractors and blue-collar companies that depend on calls and local search demand.</p>
+      <p>We understand how local customers search, how contractors think, why clear ad copy matters, why call handling matters, why landing page relevance matters, why lead tracking matters, and why real business owners care more about booked jobs than marketing jargon.</p>
+      <p>That gives us a practical advantage when building and managing campaigns.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "How much should I budget for Google Ads?",
+    answer: "We typically recommend a minimum of $2,000/month in ad spend to get meaningful data and results. Most established contractors invest $3,000–$5,000/month depending on their market and service area."
+  },
+  {
+    question: "How long before I see results?",
+    answer: "Google Ads can produce calls within the first week of launch. However, the first 30–60 days are an optimization period — results improve significantly as we gather data and refine the campaigns."
+  },
+  {
+    question: "Do you use Google's automated bidding?",
+    answer: "For most contractor clients, no. We use manual bidding strategies because automated bidding needs large volumes of conversion data to work well — and it often overspends before that data exists."
+  },
+  {
+    question: "What's included in management?",
+    answer: "Campaign setup, keyword research, ad copywriting, geo targeting, ad scheduling, landing page strategy, call tracking setup, form tracking, chatbot lead tracking, conversion-focused reporting, search term review, negative keyword work, budget allocation, and ongoing campaign management."
+  },
+  {
+    question: "Are there long-term contracts?",
+    answer: "No. We do not lock you into long-term contracts. We earn your business every month by delivering results — calls, leads, and measurable ROI."
+  },
+  {
+    question: "Can Google Ads help during slower seasons?",
+    answer: "Absolutely. One of the best uses of Google Ads for contractors is filling in the gaps during slower periods. We can adjust budget and focus to target the services and areas that will produce the best opportunities at any given time."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "Lead Generation & Tracking",
+    desc: "Know which campaigns, keywords, and channels are producing your best leads — so you can stop guessing and scale what works.",
+    href: "/track-calls-leads"
+  },
+  {
+    title: "AI Answering Service for Contractors",
+    desc: "Answer every call your ads generate — day or night. Never lose a lead because nobody picked up the phone.",
+    href: "/answer-my-calls"
+  },
+  {
+    title: "AI Integration for Contractors",
+    desc: "Capture leads from your ad traffic even after hours with an AI chatbot that engages visitors and collects contact details automatically.",
+    href: "/ai-chatbot"
+  }
+];
+
+const ctaHeading = "Need More Leads from Google Ads Without Wasting Money on Junk Clicks?";
+const canonicalPath = "/get-more-leads";
+const metaTitle = "Contractor Lead Generation Services | Get More Leads";
+const metaDescription = "Need more jobs? We specialize in lead generation for contractors, using Google Ads and proven marketing strategies to drive exclusive, high-quality local leads.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

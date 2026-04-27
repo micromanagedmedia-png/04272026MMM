@@ -1,0 +1,128 @@
+---
+import ServicePageLayout from '../../components/ServicePageLayout.astro';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const localMarketsCallout = `
+<a href="/services/google-ppc-locations"
+   class="group flex items-start gap-4 bg-primary/5 border border-primary/20 hover:border-accent/40 hover:bg-accent/5 rounded-2xl p-5 transition-all duration-200 mt-2">
+  <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-accent/10 transition-colors">
+    <svg class="w-5 h-5 text-primary group-hover:text-accent transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+    </svg>
+  </div>
+  <div>
+    <div class="font-bold text-foreground text-sm mb-1 group-hover:text-accent transition-colors">
+      Serving America's Top 50 Markets →
+    </div>
+    <p class="text-muted-foreground text-sm leading-relaxed">
+      We run geo-targeted Google PPC campaigns across all 50 major U.S. metros — from New York and Los Angeles to Nashville and Albuquerque. See our full local market coverage and city-specific strategies.
+    </p>
+  </div>
+</a>`;
+
+const sections = [
+  {
+    heading: 'Why Google PPC Is the Fastest Path to Qualified Leads',
+    body: `<p>Google processes over 8.5 billion searches every single day. That means every minute, thousands of potential customers are actively searching for businesses exactly like yours. Google Pay-Per-Click advertising puts your brand directly in front of those high-intent buyers at the precise moment they're ready to act. Unlike social media advertising, where you push your message to a passive audience, Google PPC is pull marketing at its finest — you're capturing demand that already exists.</p>
+<p>At MicroManaged Media, we've been managing Google Ads campaigns since the platform launched. With over two decades of hands-on experience, our certified specialists understand every nuance of the Google Ads ecosystem — from Search and Display to Performance Max, Shopping, and YouTube. We don't run cookie-cutter campaigns. Every strategy is built from scratch around your unique business goals, competitive landscape, and customer journey.</p>
+${localMarketsCallout}`,
+  },
+  {
+    heading: 'Our Google PPC Strategy: Every Dollar Accounted For',
+    body: `<p>The biggest problem with most Google Ads accounts? Wasted spend. Studies show the average business wastes 25–40% of its Google Ads budget on irrelevant clicks, poor targeting, and underperforming ad groups. We fix that. Our team conducts a deep-dive audit of your account (or builds one from the ground up) to ensure every dollar is working strategically toward your revenue goals.</p>
+<p>Our process begins with exhaustive keyword research — identifying high-intent, commercially-motivated search terms your competitors are either ignoring or overpaying for. We build tightly themed ad groups with custom ad copy that speaks directly to the searcher's intent. We implement robust negative keyword lists to prevent budget drain on irrelevant queries. Every element — from bidding strategy to ad extensions to Quality Score optimization — is tuned for peak performance.</p>
+<p>We manage campaigns across every Google network: Search, Display, Gmail Sponsored Promotions, YouTube pre-roll, Google Shopping for e-commerce clients, and Performance Max campaigns that leverage Google's AI within the guardrails we define. Our expertise spans B2B lead generation, e-commerce, local services, healthcare, legal, home improvement, financial services, and more.</p>`,
+  },
+  {
+    heading: 'Conversion Tracking, Attribution & Transparent Reporting',
+    body: `<p>Running traffic to your website is only half the equation. What happens after the click is where campaigns win or lose. We set up comprehensive conversion tracking — phone calls, form submissions, live chat engagements, e-commerce transactions, and micro-conversions — so you have complete visibility into exactly which keywords, ads, and campaigns are generating real business outcomes.</p>
+<p>We integrate Google Ads with Google Analytics 4, your CRM, and call tracking platforms so attribution is airtight. You'll never wonder whether your ad spend is generating ROI — our monthly reporting dashboards translate raw data into plain-English insights with clear next-step recommendations. We believe in radical transparency: you own your account, you see everything, and you'll always understand what we're doing and why.</p>`,
+  },
+  {
+    heading: 'Continuous Optimization: The MMM Difference',
+    body: `<p>Google PPC is not a set-it-and-forget-it channel. The advertisers who win are the ones who iterate relentlessly — testing new ad copy, refining audiences, adjusting bids, expanding into new keyword territories, and cutting what isn't working. This is where our 20+ years of experience truly pays off. We've seen every market condition, every algorithm update, and every competitive shift. We know how to adapt quickly and capitalize on opportunities your competitors miss.</p>
+<p>Our team reviews your campaigns weekly, making data-driven optimizations that compound over time. Our clients consistently see ROAS improvements of 40–300% within the first six months of working with us. Whether you're spending $2,000 or $200,000 per month on Google Ads, our obsessive approach to performance management delivers results that move the needle on your bottom line.</p>`,
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is Google Pay-Per-Click (PPC) advertising?',
+    answer: "Google PPC is a system where your business pays to appear at the top of Google search results when someone searches for your service — like 'AC repair near me' or 'emergency plumber.' You only pay when someone actually clicks your ad, not just when it's shown. It's one of the most efficient forms of advertising because you're capturing people with direct purchase intent, not interrupting unrelated browsing.",
+  },
+  {
+    question: 'How quickly will I start getting leads from Google Ads?',
+    answer: "A properly built Google Ads campaign can generate calls and form fills within 24–72 hours of going live. Unlike SEO, there's no waiting period for rankings — traffic starts the moment your ads are approved. That said, the first 30–60 days are a learning phase where we gather data and optimize for the most profitable keywords and audiences.",
+  },
+  {
+    question: 'How much should I budget for Google Ads?',
+    answer: "For local service businesses, a realistic starting point is $2,000–$5,000/month in ad spend. Lower budgets can work, but they limit the data volume needed for smart optimization — and in competitive industries like HVAC or plumbing, low budgets often mean inconsistent lead flow. Our management fee is separate from your ad spend. We'll build a custom budget recommendation based on your market, competition level, and revenue goals during your free consultation.",
+  },
+  {
+    question: "Why am I paying for clicks that don't convert into customers?",
+    answer: "Not all clicks are equal. Poor targeting, weak match types, or generic ad copy attract the wrong traffic — people researching, not buying. We fix this through tightly-themed ad groups, aggressive negative keyword lists, and high-converting ad copy that speaks directly to purchase-ready searchers. Paired with a strong landing page strategy, this filters out low-intent clicks and dramatically improves your cost per lead.",
+  },
+  {
+    question: 'Do I need a dedicated landing page, or can I use my website?',
+    answer: "You can use your website, but a dedicated landing page will almost always outperform it. Landing pages strip away navigation distractions, match the specific message of your ad, and focus entirely on one goal — getting the phone call or form submission. We advise on landing page strategy and can work with your web team or recommend solutions that maximize conversion rates from your Google Ads traffic.",
+  },
+  {
+    question: 'How do I know if my Google Ads campaign is actually working?',
+    answer: "We track everything that matters: phone calls (with dynamic call tracking numbers), form fill leads, cost per lead, and revenue attribution. Our reporting dashboards give you a plain-English view of what's working and what's being cut. Without proper tracking, you're guessing. With our setup, every decision is data-driven — we scale what's profitable and eliminate what isn't.",
+  },
+  {
+    question: "Should I use Google's Smart Bidding or manual bidding?",
+    answer: "Google aggressively pushes automation, but many experienced advertisers — including our team — prefer manual bidding and tighter campaign controls, especially for local service businesses. Smart Bidding optimizes for volume and Google's definition of conversions, which often means trading lead quality for lead quantity. We use manual and enhanced CPC strategies that prioritize high-intent search terms and protect your budget from Google's broad-match creep.",
+  },
+];
+
+const relatedServices = [
+  {
+    title: 'Bing PPC Advertising',
+    desc: 'Reach 63M+ exclusive searchers your Google campaigns miss entirely — at 25–40% lower CPCs. The underutilized platform most contractors ignore.',
+    href: '/services/bing-ppc',
+  },
+  {
+    title: 'CRM & Marketing Automation',
+    desc: 'Close the follow-up gap. Airtable + Make.com workflows ensure every lead from your Google Ads gets tracked, followed up, and converted.',
+    href: '/services/crm-implementation',
+  },
+  {
+    title: 'This is Gracie™ — AI Receptionist',
+    desc: 'Every call your ads generate gets answered 24/7 — day, night, weekends. Never lose a lead because nobody picked up the phone.',
+    href: '/services/ai-automation',
+  },
+];
+---
+
+  <ServicePageLayout
+    title="Google PPC Advertising"
+    subtitle="Paid Search Management"
+    tagline="Manually optimized Google Ads campaigns for local service contractors — no smart bidding shortcuts, no wasted spend, no guesswork. Just calls, booked jobs, and measurable revenue. Built by Bob Rutledge with 25+ years of paid search experience."
+    iconSvg='<svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6"/></svg>'
+    heroStats={[
+      { value: '25+', label: 'Years Experience' },
+      { value: '6.2x', label: 'Avg. ROAS' },
+      { value: '$5M+', label: 'Ad Spend Managed' },
+      { value: 'Manual', label: 'Bidding Strategy' },
+    ]}
+    benefits={[
+      'Manual bidding — no automation shortcuts',
+      'Buyer-intent keyword targeting only',
+      'Aggressive negative keyword management',
+      'Ad copy written for contractors',
+      'LeadTable™ call tracking integration',
+      'Weekly optimization and reporting',
+      'Dedicated contractor landing pages',
+      'Geographic targeting to service area',
+    ]}
+    sections={sections}
+    ctaHeading="Ready to Dominate Google Search?"
+    faqs={faqs}
+    relatedServices={relatedServices}
+    canonicalPath="/services/google-ppc"
+    metaTitle="Google PPC for Contractors | Expert Google Ads Management"
+    metaDescription="Stop wasting ad spend. We build manually optimized Google Ads campaigns for home service businesses to get you more calls, booked jobs, and proven ROI."
+  />

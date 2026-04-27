@@ -1,0 +1,144 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "Get More 5-Star Reviews";
+const subtitle = "Review Generation for Contractors";
+const tagline = "A lot of contractors do good work but do not get nearly enough credit for it online. MicroManaged Media, Inc. helps contractors and service businesses get more 5-star reviews by improving the follow-up process, making review requests easier, and turning satisfied customers into visible proof that your business delivers.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+
+const heroStats = [
+  { value: "5★", label: "Target Rating" },
+  { value: "More", label: "Reviews" },
+  { value: "Better", label: "Maps Presence" },
+  { value: "Stronger", label: "Local Trust" }
+];
+
+const benefits = [
+  "Turn satisfied customers into visible online proof",
+  "Build trust faster with prospects comparing options",
+  "Improve your Google Maps presence over time",
+  "Consistent process — not left to chance",
+  "Simple follow-up that increases review response",
+  "Integrated with your workflow and lead system",
+  "Help separate your business from weaker competitors"
+];
+
+const sections = [
+  {
+    heading: "Reviews Matter More Than Most Businesses Think",
+    body: `
+      <p>When a prospect finds your business online, they often look at reviews almost immediately. They want to know: do other customers trust you, do you show up and do what you say, are your reviews recent, and does your business look active and credible.</p>
+      <p>You may be doing excellent work in the field, but if your competitors have stronger review visibility, they often have the advantage before the customer ever contacts you. In many cases, the review profile is one of the first things a prospect notices when comparing local service companies.</p>
+    `
+  },
+  {
+    heading: "Built for Contractors and Local Service Companies",
+    body: `
+      <p>We help businesses that depend on local trust and inbound leads — HVAC contractors, plumbers, electricians, fence builders, deck builders, flooring companies, remodelers, gutter companies, garage door companies, and other local service businesses.</p>
+      <p>If your next customer is comparing you to two or three other companies on Google, reviews can make the difference before the phone even rings.</p>
+    `
+  },
+  {
+    heading: "A Better Review Process Gets Better Results",
+    body: `
+      <p>Most businesses do not have a review problem because customers dislike them. They have a process problem. They forget to ask. They ask too late. They make it awkward. They do not follow up. They leave too much friction in the process.</p>
+      <p>We help simplify that. The easier and more consistent the review request process becomes, the more likely you are to get reviews from happy customers. We help businesses improve the full review-generation process, including:</p>
+      <ul>
+        <li><strong>Timing:</strong> <span>The best time to ask for a review is often right after a positive job experience, not two weeks later when the moment is gone.</span></li>
+        <li><strong>Simplicity:</strong> <span>The easier it is for a customer to leave a review, the better your odds. Friction kills response rates.</span></li>
+        <li><strong>Consistency:</strong> <span>Businesses that ask consistently usually outperform businesses that ask only when somebody remembers.</span></li>
+        <li><strong>Follow-Up:</strong> <span>Sometimes customers need a second reminder. A simple follow-up can help increase results without being pushy.</span></li>
+        <li><strong>Integration with Your Workflow:</strong> <span>Review generation works better when it ties into the way your business already handles leads, jobs, and customer follow-up.</span></li>
+      </ul>
+    `
+  },
+  {
+    heading: "Good Work Should Not Stay Invisible",
+    body: `
+      <p>A lot of great contractors have too few reviews simply because nobody built a system for asking. That means years of satisfied customers never turn into visible online proof.</p>
+      <p>Strong reviews do more than make you feel good. They can help build trust faster, improve click-through from Google Maps, strengthen your Google Business Profile, support local search performance, increase phone calls, improve lead conversion, make your business look more established, and separate you from weaker competitors.</p>
+      <p>We help fix the gap by making review generation part of a more organized business process instead of leaving it to chance.</p>
+    `
+  },
+  {
+    heading: "Works with the Rest of Your Lead and Follow-Up System",
+    body: `
+      <p>Review generation should not sit off to the side as an afterthought. It works best when it fits into your broader process, alongside your website, your Google Business Profile, your call tracking, your form tracking, your AI chatbot leads, your 24/7 AI receptionist, and your customer follow-up workflow.</p>
+      <p>That is one reason businesses use MicroManaged Media. We look at review generation as part of your overall local marketing and lead system — not a standalone tactic that lives on an island.</p>
+    `
+  },
+  {
+    heading: "Why Businesses Hire MicroManaged Media",
+    body: `
+      <p>We understand that reviews are not just about reputation. They affect visibility, trust, response rates, and lead generation.</p>
+      <p>Because we also work in Google Maps visibility, websites, Google Ads, call tracking, chatbot leads, and AI answering, we understand how reviews influence what happens across the whole customer journey. That gives us a more practical approach than simply telling you to get more reviews — we help build the system that makes it happen consistently.</p>
+    `
+  }
+];
+
+const faqs = [
+  {
+    question: "Why do so many contractors struggle to get reviews even when customers are happy?",
+    answer: "Usually it comes down to process. Happy customers rarely leave reviews on their own — they have to be asked at the right moment, in the right way, with as little friction as possible. Most businesses either forget to ask, ask too late, or make the process too complicated."
+  },
+  {
+    question: "Does this work for Google reviews specifically?",
+    answer: "Yes. Google reviews have the biggest impact on your Google Maps presence and local search visibility, so that is the primary focus. The process can also be adapted to support other platforms depending on your business."
+  },
+  {
+    question: "How quickly will I start seeing more reviews?",
+    answer: "Most businesses start seeing new reviews within the first few weeks once a consistent process is in place. Review volume builds steadily over time as more customers move through the follow-up system."
+  },
+  {
+    question: "What if a customer had a bad experience?",
+    answer: "The process is designed to catch dissatisfied customers and route them back to you directly — giving you a chance to make it right before a negative review is posted publicly. This helps protect your reputation while still generating a strong flow of positive reviews from satisfied customers."
+  },
+  {
+    question: "Do reviews actually affect how often I show up on Google Maps?",
+    answer: "Yes. Review volume, recency, and overall rating are all factors in how Google evaluates your local credibility. Businesses that consistently accumulate new reviews tend to outperform stagnant competitors in local search results over time."
+  },
+  {
+    question: "How does this connect with your other services?",
+    answer: "Review generation fits naturally alongside your Google Business Profile, website, call tracking, and lead follow-up systems. When all of those pieces are working together, your marketing and your reputation reinforce each other instead of operating in silos."
+  }
+];
+
+const relatedServices = [
+  {
+    title: "Google Maps Optimization",
+    desc: "Reviews are the top ranking signal in Google Maps. Pair a strong review system with full profile optimization to dominate local search results.",
+    href: "/google-maps"
+  },
+  {
+    title: "AI Answering Service for Contractors",
+    desc: "Make every customer experience worth a 5-star review — by answering every call professionally, day or night, so no one is left waiting.",
+    href: "/answer-my-calls"
+  },
+  {
+    title: "PPC Advertising for Contractors",
+    desc: "Strong reviews improve ad performance and conversion rates. Combine Google Ads with a growing review profile to win more jobs at a lower cost.",
+    href: "/get-more-leads"
+  }
+];
+
+const ctaHeading = "Want to Get More 5-Star Reviews and Strengthen Your Local Reputation?";
+const canonicalPath = "/5-star-reviews";
+const metaTitle = "5-Star Review Generation for Contractors | MicroManaged Media";
+const metaDescription = "MicroManaged Media helps contractors get more 5-star Google reviews with a consistent, automated process. Build trust, improve Google Maps visibility, and win more jobs.";
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  ctaHeading={ctaHeading}
+  faqs={faqs}
+  relatedServices={relatedServices}
+  canonicalPath={canonicalPath}
+  metaTitle={metaTitle}
+  metaDescription={metaDescription}
+/>

@@ -1,0 +1,276 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ScrollToTop from '../../components/ScrollToTop.astro';
+import { bingMarkets } from '../../data/bingMarkets';
+
+const APP_URL = 'https://micromanagedmedia.com';
+
+const stats = [
+  { value: '50', label: 'U.S. Markets Served' },
+  { value: '37%', label: 'Lower Avg. CPC vs Google' },
+  { value: '63M+', label: 'Exclusive Bing Searchers' },
+  { value: '20+', label: 'Years Experience' },
+];
+
+const whyLocal = [
+  {
+    title: "City-Specific LinkedIn Targeting",
+    desc: "We layer Microsoft's LinkedIn Professional Network data onto your Bing campaigns — targeting searchers in each metro by job title, company, industry, and seniority for B2B precision unavailable anywhere else.",
+  },
+  {
+    title: "Local CPC Arbitrage Strategy",
+    desc: "Bing CPCs vary dramatically by market. We identify where local competitors are underinvesting on Bing and help you capture dominant share at 25–40% below equivalent Google costs in every market.",
+  },
+  {
+    title: "Microsoft-Dominant Market Targeting",
+    desc: "Government centers, military metros, and manufacturing hubs have dramatically higher Bing market share. We identify these advantages in each of your target cities and build campaigns to capitalize on them.",
+  },
+  {
+    title: "Cross-Platform Market Attribution",
+    desc: "We run unified Google + Bing reporting for each market so you see exactly how each platform contributes to your local lead flow — and can make smart budget allocation decisions across both channels.",
+  },
+];
+
+const industries = [
+  { name: 'HVAC & Air Conditioning', slug: 'hvac' },
+  { name: 'Plumbing & Drain Services', slug: 'plumbing' },
+  { name: 'Roofing & Gutters', slug: 'roofing' },
+  { name: 'Electricians & Electrical Contractors', slug: 'electricians' },
+  { name: 'Fence Installation & Repair', slug: 'fence-contractors' },
+  { name: 'Kitchen & Bathroom Remodeling', slug: 'remodeling' },
+  { name: 'General Contractors & Renovation', slug: 'general-contractors' },
+  { name: 'Landscaping & Lawn Care', slug: 'landscaping' },
+  { name: 'Concrete & Masonry', slug: 'concrete-masonry' },
+  { name: 'Painting Contractors', slug: 'painting' },
+  { name: 'Pest Control Services', slug: 'pest-control' },
+  { name: 'Garage Door Installation & Repair', slug: 'garage-doors' },
+];
+---
+
+<Layout
+  title="Microsoft (Bing) Advertising Across America's Top Markets | MicroManaged Media"
+  description="MicroManaged Media delivers precision-targeted Bing PPC campaigns in every major U.S. metro. 20+ years of Microsoft Advertising experience — 25–40% lower CPCs than Google with LinkedIn audience targeting."
+  canonical={`${APP_URL}/services/bing-ppc-locations`}
+>
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative bg-[#0a1628] pt-32 pb-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 70% 40%, hsl(196 94% 40%) 0%, transparent 55%);"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <Breadcrumb
+        items={[{ label: 'Services' }, { label: 'Bing PPC', href: '/services/bing-ppc' }, { label: 'All Markets' }]}
+        variant="dark"
+        class="mb-8"
+      />
+      <div class="max-w-4xl">
+        <div class="w-14 h-14 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center mb-6">
+          <svg class="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 20V10M12 20V4M6 20v-6"/>
+          </svg>
+        </div>
+        <span class="text-cyan-400 text-sm font-semibold uppercase tracking-widest">Geo-Targeted Bing PPC</span>
+        <h1 class="text-4xl md:text-6xl font-black text-white mt-3 mb-5 tracking-tight leading-tight">
+          Microsoft Advertising Across<br />
+          <span class="text-cyan-400">America's Top Markets</span>
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed max-w-3xl">
+          MicroManaged Media delivers precision-targeted Bing (Microsoft Advertising) campaigns in every major U.S. metro. With 20+ years of paid search experience and deep knowledge of Bing's unique local audiences, we capture the high-income, high-intent searchers your Google-only competitors are completely ignoring — at 25–40% lower cost-per-click.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/#contact" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-8 py-3.5 rounded-full transition-colors">
+            Get a Free Bing PPC Audit
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/services/bing-ppc" class="inline-flex items-center gap-2 text-white bg-cyan-600 hover:bg-cyan-500 rounded-full px-8 py-3.5 font-semibold transition-colors">
+            View Full Bing PPC Service
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-gray-50 dark:bg-gray-900/40 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 dark:divide-gray-700">
+        {stats.map((s) => (
+          <div class="py-6 px-4 text-center">
+            <div class="text-2xl md:text-3xl font-black text-blue-900 dark:text-blue-400">{s.value}</div>
+            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-20 bg-white dark:bg-gray-950">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+        Local Bing PPC That <span class="text-blue-900 dark:text-blue-400">Wins Where Google Can't</span>
+      </h2>
+      <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+        <p>Every U.S. market has a Bing opportunity that most of your competitors are completely overlooking. While the local Google auction grows more crowded and expensive every year, Bing's 63+ million exclusive searchers sit largely untapped — generating high-intent clicks at 25–40% lower costs. In specific markets and industries, the Bing advantage is even more dramatic: government centers, military metros, financial hubs, and manufacturing cities consistently show Bing market shares that far exceed the national average.</p>
+        <p>At MicroManaged Media, we've been managing Microsoft Advertising campaigns across America's major markets for over 20 years. We understand that Bing isn't a one-size-fits-all secondary channel — it's a distinct platform with unique audience demographics, LinkedIn integration capabilities, and market-specific advantages that require genuine local expertise to fully exploit.</p>
+        <p>Our geo-targeted Bing PPC approach combines market-specific keyword intelligence, LinkedIn Professional Network audience overlays, location-adjusted bidding strategies, and locally-relevant ad creative to ensure your Microsoft Advertising campaigns capture every high-value opportunity in your target markets — at costs that consistently beat your Google benchmarks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why local matters -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900/20 border-y border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-3">
+          Why <span class="text-blue-900 dark:text-blue-400">Local Bing Expertise</span> Matters
+        </h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+          Bing's audience composition, market share, and competitive landscape vary dramatically city by city. Generic Bing campaigns miss the local advantages that make the platform transformative.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {whyLocal.map((item) => (
+          <div class="bg-white dark:bg-gray-900 rounded-2xl p-7 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/30 hover:shadow-md transition-all duration-300">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Directory -->
+  <section class="py-20 bg-white dark:bg-gray-950" id="markets">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-3">
+          Our <span class="text-blue-900 dark:text-blue-400">Bing PPC Markets</span>
+        </h2>
+        <p class="text-gray-500 dark:text-gray-400 max-w-xl mx-auto mb-4">
+          Ranked by market size with typical Bing CPC ranges. Click any market for a full city-specific Bing PPC strategy.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 max-w-7xl mx-auto">
+        {bingMarkets.map((market) => (
+          <a
+            href={`/services/bing-ppc/${market.slug}`}
+            class="group flex items-start justify-between gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 hover:shadow-md rounded-xl p-4 transition-all duration-200 h-full"
+          >
+            <div class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-400 text-xs font-black flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-cyan-50 dark:group-hover:bg-cyan-900/10 group-hover:text-cyan-500 transition-colors">
+                {market.rank}
+              </span>
+              <div>
+                <div class="font-semibold text-sm text-gray-900 dark:text-white leading-tight group-hover:text-cyan-500 transition-colors">{market.city}</div>
+                <div class="text-xs text-gray-400 mt-0.5">{market.state} · {market.cpcRange}</div>
+              </div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-gray-300 dark:text-gray-600 group-hover:text-cyan-400 transition-colors shrink-0 mt-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries -->
+  <section class="py-20 bg-gray-50 dark:bg-gray-900/20 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="text-cyan-500 text-sm font-semibold uppercase tracking-widest">Trades We Serve</span>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mt-3 mb-5 tracking-tight">
+            Built for <span class="text-blue-900 dark:text-blue-400">Local Contractors & Trades</span>
+          </h2>
+          <p class="text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+            We work exclusively with blue collar service businesses — HVAC companies, plumbers, roofers, electricians, fence contractors, and renovation pros who need the phone ringing, not vanity metrics. Bing's older, higher-income homeowner demographic is one of the best audiences for home services, and we know how to reach them.
+          </p>
+          <p class="text-gray-500 dark:text-gray-400 leading-relaxed">
+            Whether you're a roofing contractor in Dallas, a plumber in Chicago, an HVAC company in Phoenix, or a fence builder in Nashville — we understand the search intent, seasonal demand patterns, and competitive dynamics of your trade in your market.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          {industries.map((ind) => (
+            <a href={`/industries/${ind.slug}`} class="group flex items-center gap-2.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 rounded-xl px-4 py-3 transition-all duration-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0"></span>
+              <span class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-cyan-500 transition-colors">{ind.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep content -->
+  <section class="py-20 bg-white dark:bg-gray-950">
+    <div class="container mx-auto px-6 max-w-4xl space-y-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-5 tracking-tight">
+          The Local Bing Advantage: <span class="text-blue-900 dark:text-blue-400">Market by Market</span>
+        </h2>
+        <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+          <p>Bing's national market share of roughly 6–8% understates the platform's local impact in specific markets and demographics. In Washington DC — where federal government employees use Microsoft products by mandate — Bing's effective market share among professional searchers can approach 20–25%. In Seattle, Microsoft's home city, Bing over-indexes significantly. In military-heavy markets like San Antonio, Norfolk, and Jacksonville, Department of Defense Microsoft standardization creates exceptional Bing reach that no other platform can match.</p>
+          <p>For every one of America's top 50 advertising markets, MicroManaged Media conducts a thorough Bing opportunity assessment: analyzing local market share by device and demographic, identifying industry verticals where LinkedIn audience overlays create exceptional B2B targeting, benchmarking CPC levels against Google equivalents to quantify the cost advantage, and evaluating the competitive landscape to find where most advertisers are underinvesting on Microsoft's platform.</p>
+          <p>The results consistently reveal the same pattern: in market after market, Bing campaigns managed with genuine local expertise deliver cost-per-lead rates 30–50% below Google benchmarks, with conversion quality that matches or exceeds Google in most professional service and B2B categories.</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-5 tracking-tight">
+          Integrated Google + Bing Management Across <span class="text-blue-900 dark:text-blue-400">Every Market</span>
+        </h2>
+        <div class="space-y-4 text-gray-500 dark:text-gray-400 text-[1.0625rem] leading-relaxed">
+          <p>The most powerful paid search strategy isn't Google OR Bing — it's Google AND Bing, managed as an integrated portfolio with shared intelligence, unified attribution, and deliberate budget allocation across both platforms. When MicroManaged Media manages your campaigns on both platforms in the same market, we create a compounding competitive advantage: Google insights inform Bing strategy, Bing conversion data enriches Google audience targeting, and attribution across both platforms gives you a complete picture of your total local paid search ROI.</p>
+          <p>Our market-specific Bing campaigns aren't simply imported Google campaigns with different bids. They're purpose-built for Microsoft's ecosystem: optimized for Bing's audience demographics, structured to leverage LinkedIn profile targeting capabilities, and calibrated for the specific competitive dynamics of each local Bing auction. With 20+ years of managing Microsoft Advertising campaigns in markets from New York to Albuquerque, MicroManaged Media brings the local knowledge and platform expertise to turn Bing into one of your most cost-efficient customer acquisition channels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#0a1628] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(ellipse at 50% 100%, hsl(196 94% 40%) 0%, transparent 60%);"></div>
+    <div class="container mx-auto px-6 text-center max-w-2xl relative">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+        Free Local Bing Audit — No Obligation
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+        Ready to Capture What Your<br />Google Campaigns Are Missing?
+      </h2>
+      <p class="text-white/60 text-lg mb-8 leading-relaxed">
+        Tell us which markets you're targeting and we'll show you exactly where the Bing opportunity is — and what it would take to own it.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-10 py-4 rounded-full transition-colors">
+          Get My Free Bing Market Audit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/services/bing-ppc" class="inline-flex items-center justify-center gap-2 text-white bg-cyan-600 hover:bg-cyan-500 rounded-full px-10 py-4 font-semibold transition-colors">
+          View Bing PPC Service
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-white/40 text-xs uppercase tracking-widest">
+        <span>✓ Markets Covered</span>
+        <span>✓ 37% Lower Avg. CPCs</span>
+        <span>✓ LinkedIn Audience Targeting</span>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <ScrollToTop />
+</Layout>

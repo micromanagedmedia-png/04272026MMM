@@ -1,0 +1,170 @@
+---
+import ServicePageLayout from '../components/ServicePageLayout.astro';
+
+const title = "The Modern Web Blueprint & 2026 Vibe Coding Superprompt";
+const subtitle = "Micromanaged Media Learning Series";
+const tagline = "A Student's Guide to AI-Driven, High-Performance Websites. Welcome to the new era of web development.";
+const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+
+const heroStats = [
+  { value: "100", label: "PageSpeed Score" },
+  { value: "AI", label: "Driven Development" },
+  { value: "Static", label: "Site Generation" },
+  { value: "Fast", label: "Crawl Budget" }
+];
+
+const benefits = [
+  "Build high-performance static websites",
+  "Move away from heavy CMS platforms like WordPress",
+  "Use Astro with Static Site Generation (SSG)",
+  "Implement JSON-LD Schema for Local SEO",
+  "Faster indexing by Google crawlers",
+  "Zero JS defaults via Islands Architecture"
+];
+
+const sections = [
+  {
+    heading: "The Modern Web Blueprint",
+    body: `
+      <h3>Phase 1: The Three Pillars</h3>
+      <div class="mb-6 space-y-6">
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</span>
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white">Google AI Studio (The Brain)</h4>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300">Think of Google AI Studio as your senior developer. You don't write the code; you "vibe" it. You describe what you want in plain English, and the Gemini models write the files for you.</p>
+          <div class="mt-4 p-4 border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/20 text-slate-700 dark:text-slate-300 italic text-sm">
+            <strong>Student Tip:</strong> In AI Studio, always use "Build Mode." This allows the AI to see your entire project at once so it doesn't get confused between different pages.
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</span>
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white">GitHub (The Vault)</h4>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300">GitHub is where your code lives. Think of it as a super-powered Google Drive for programmers. It keeps track of every change you make. If you break something, you can simply "roll back" to a version that worked.</p>
+          <div class="mt-4 p-4 border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/20 text-slate-700 dark:text-slate-300 italic text-sm">
+            <strong>Student Tip:</strong> A "Repository" (or Repo) is just a folder. When you "Commit" and "Push," you are just saving your work to the internet.
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-100 dark:border-slate-700/50">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">3</span>
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white">Netlify (The Speaker)</h4>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300">Netlify takes your code from GitHub and puts it on a live website URL. It is the fastest way to host a site because it uses a Global CDN (Content Delivery Network)—meaning your site is physically close to your users, no matter where they are.</p>
+        </div>
+      </div>
+
+      <div class="mt-8 mb-6 p-6 bg-blue-50 dark:bg-slate-800/50 rounded-2xl border border-blue-100 dark:border-slate-700/50">
+        <h3 class="text-xl font-bold mb-4">Download The Blueprint PDF</h3>
+        <p class="mb-4">Get the full Modern Web Blueprint PDF for offline reading and sharing.</p>
+        <a href="https://storage.googleapis.com/bobs-bucket-for-mmm2025/micromanagedmedia/micromanaged-media-student-guide.pdf" download class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-sm" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    `
+  },
+  {
+    heading: "2026 Vibe Coding Superprompt",
+    body: `
+      <p>In 2026, the fastest way to get indexed by Google is to move away from "heavy" CMS platforms like WordPress and utilize Astro with Static Site Generation (SSG). This guide provides a generic version of the "Superprompt" that can be used in Google AI Studio, Bolt.new, or Cursor to build any business site.</p>
+      
+      <h3 class="text-xl font-bold mt-8 mb-4">1. The Master Prompt</h3>
+      <p class="mb-4">Copy and paste the text below into your AI development tool of choice. Replace the bracketed text with your specific business details.</p>
+      
+      <div class="bg-[#0f172a] p-6 rounded-xl overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed mb-8 shadow-inner border border-slate-700">
+<pre><code>[SYSTEM INSTRUCTION: Act as a Senior Web Architect and SEO Specialist.]
+
+TASK: Build a multi-page, high-performance static website for [BUSINESS NAME/TYPE].
+
+TECH SPECIFICATIONS:
+- Framework: Astro (Static Site Generation mode).
+- Architecture: Islands Architecture (Zero JS by default).
+- Styling: Tailwind CSS or Vanilla CSS (Modern, clean aesthetic).
+- Deployment: Optimized for GitHub to Netlify/Vercel pipeline.
+
+CORE STRUCTURE:
+- Create separate pages for index, services, about, and contact.
+- Use semantic HTML5 tags throughout.
+- Implement "Speculative Loading" (Hover-based pre-rendering).
+
+SEO &amp; INDEXING REQUIREMENTS:
+- Unique &lt;title&gt; and &lt;meta description&gt; for every page.
+- Full JSON-LD Schema markup (LocalBusiness or Organization) in the header.
+- Generate sitemap.xml and robots.txt.
+- Configure IndexNow protocol compatibility.
+- Use Astro &lt;Image /&gt; component for 100/100 Core Web Vitals.
+
+DESIGN VIBE:
+[DESCRIBE YOUR STYLE, e.g., "Professional Minimalist" or "Coastal Modern"].
+
+OUTPUT: Provide a complete directory structure and all necessary code files.</code></pre>
+      </div>
+
+      <div class="mt-8 mb-6 p-6 bg-blue-50 dark:bg-slate-800/50 rounded-2xl border border-blue-100 dark:border-slate-700/50">
+        <h3 class="text-xl font-bold mb-4">Download The Superprompt PDF</h3>
+        <p class="mb-4">Get the full Vibe Coding Superprompt PDF for offline reading and sharing.</p>
+        <a href="https://storage.googleapis.com/bobs-bucket-for-mmm2025/micromanagedmedia/vibe-coding-superprompt-guide.pdf" download class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-colors shadow-sm" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+    `
+  },
+  {
+    heading: "Technical Explanations",
+    body: `
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-xl border border-gray-100 dark:border-slate-700/50">
+          <div class="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider mb-3">TECH</div>
+          <h4 class="text-lg font-bold mb-2 break-normal">Why Astro?</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Astro uses "Islands Architecture." Traditional sites load one giant block of JavaScript. Astro renders everything as static HTML (which Google reads instantly) and only "hydrates" interactive parts. This results in the fastest possible "Crawl Budget" efficiency.</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-xl border border-gray-100 dark:border-slate-700/50">
+          <div class="inline-block bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider mb-3">SEO</div>
+          <h4 class="text-lg font-bold mb-2">Why JSON-LD Schema?</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-300">Schema is the "language" of Google's AI. By including it, you aren't just giving Google text to read; you are giving them data to categorize. This increases the likelihood of appearing in Rich Snippets and the Google Map Pack.</p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-xl border border-gray-100 dark:border-slate-700/50">
+          <div class="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wider mb-3">SPEED</div>
+          <h4 class="text-lg font-bold mb-2">Speculative Loading</h4>
+          <p class="text-sm text-slate-600 dark:text-slate-300">This is the "HTML Preload" secret. When a user (or crawler) hovers over a link, the site begins loading the next page in the background. By the time they click, the page is already there. Google tracks this "User Experience" as a high-ranking signal.</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    heading: "The Deployment Workflow",
+    body: `
+      <ol class="list-decimal pl-6 space-y-4 mb-6">
+        <li><strong>Step 1: Generate.</strong> Paste the prompt into your AI tool.</li>
+        <li><strong>Step 2: Sync to GitHub.</strong> AI tools like Bolt or Cursor allow you to push code directly to a GitHub repository.</li>
+        <li><strong>Step 3: Connect to Netlify.</strong> Set up "Continuous Deployment." Every time you "vibe" a change to your code, Netlify builds the site and pings search engines.</li>
+        <li><strong>Step 4: Verify.</strong> Add your Netlify URL to Google Search Console and add the TXT record to your DNS settings for instant verification.</li>
+      </ol>
+      <div class="mt-6 p-6 rounded-2xl border-l-4 border-amber-500 bg-amber-50 dark:bg-amber-900/20 text-slate-700 dark:text-slate-300 shadow-sm">
+        <strong>Why we do this:</strong> WordPress sites are slow because they have to talk to a database. Our method creates Static HTML. Google's crawlers can read Static HTML in milliseconds, which is why these sites rank higher and faster.
+      </div>
+    `
+  }
+];
+---
+
+<ServicePageLayout
+  title={title}
+  subtitle={subtitle}
+  tagline={tagline}
+  iconSvg={iconSvg}
+  heroStats={heroStats}
+  benefits={benefits}
+  sections={sections}
+  metaTitle="The Modern Web Blueprint | MicroManaged Media Learning Series"
+  metaDescription="Download the 2026 Vibe Coding Superprompt and the Modern Web Blueprint. Learn how to build AI-driven, high-performance static websites that rank higher and faster."
+/>

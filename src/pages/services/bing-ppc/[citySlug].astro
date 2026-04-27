@@ -1,0 +1,285 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import ScrollToTop from '../../../components/ScrollToTop.astro';
+import { bingMarkets, getRelatedBingMarkets, type BingMarket } from '../../../data/bingMarkets';
+
+export async function getStaticPaths() {
+  return bingMarkets.map((market) => ({
+    params: { citySlug: market.slug },
+    props: { market },
+  }));
+}
+
+const { market } = Astro.props as { market: BingMarket };
+const APP_URL = 'https://micromanagedmedia.com';
+const related = getRelatedBingMarkets(market, 4);
+const topIndustries = market.industries.slice(0, 3).join(', ');
+const tierLabel: Record<number, string> = { 1: 'Top 10 U.S. Market', 2: 'Top 25 U.S. Market', 3: 'Top 50 U.S. Market' };
+
+const linkedInLabel: Record<string, string> = {
+  Excellent: '🔵 Excellent',
+  Strong: '🟢 Strong',
+  Good: '🟡 Good',
+};
+
+const benefits = [
+  'Microsoft Advertising certified partner',
+  'City-specific keyword & audience strategy',
+  'LinkedIn Profile Targeting setup',
+  'Local competitor analysis',
+  'Google Ads import & customization',
+  'Geo-targeted ad copy & landing pages',
+  'Conversion & call tracking included',
+  '20+ years Microsoft Ads experience',
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Bing PPC Advertising in ${market.city}, ${market.state}`,
+  description: `Microsoft Advertising campaigns in ${market.fullName} by MicroManaged Media — ${market.savingsVsGoogle} vs Google, LinkedIn targeting, 20+ years experience.`,
+  provider: { '@type': 'LocalBusiness', name: 'MicroManaged Media', url: APP_URL },
+  areaServed: { '@type': 'City', name: market.city, containedIn: { '@type': 'State', name: market.state } },
+};
+
+const linkedInNote = market.linkedInOpportunity === 'Excellent'
+  ? `${market.city}'s LinkedIn targeting opportunity is rated Excellent — meaning the metro has a dense concentration of the professional roles and industries where LinkedIn data creates dramatic targeting precision. We've seen B2B advertisers in this market achieve cost-per-qualified-lead rates using Bing + LinkedIn targeting that are 40–60% below what they pay for comparable leads on Google or LinkedIn's own advertising platform.`
+  : market.linkedInOpportunity === 'Strong'
+  ? `${market.city} offers Strong LinkedIn targeting potential — a substantial professional population with well-represented industries that align with LinkedIn's data strengths. B2B advertisers here regularly achieve cost-per-qualified-lead rates 30–45% below their Google equivalents when LinkedIn profile targeting is properly configured.`
+  : `${market.city} provides Good LinkedIn targeting capability — meaningful professional audience segments that deliver above-average B2B conversion quality, particularly for companies targeting management-level and senior professional roles within the metro's key industries.`;
+---
+
+<Layout
+  title={`Bing PPC Advertising in ${market.city}, ${market.state} | MicroManaged Media`}
+  description={`Capture ${market.city}'s high-income Microsoft searchers at ${market.savingsVsGoogle}. LinkedIn audience targeting + 20+ years of Bing expertise in ${market.state}.`}
+  canonical={`${APP_URL}/services/bing-ppc/${market.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative bg-[#0a1628] pt-32 pb-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 70% 40%, hsl(196 94% 40%) 0%, transparent 55%);"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <Breadcrumb
+        items={[
+          { label: 'Services' },
+          { label: 'Bing PPC', href: '/services/bing-ppc' },
+          { label: 'All Markets', href: '/services/bing-ppc-locations' },
+          { label: `${market.city}, ${market.state}` },
+        ]}
+        variant="dark"
+        class="mb-8"
+      />
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M18 20V10M12 20V4M6 20v-6"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest block">#{market.rank} {tierLabel[market.tier]}</span>
+          <span class="text-white/50 text-xs">{market.competitionLevel} Bing Competition · LinkedIn: {market.linkedInOpportunity}</span>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight mb-5">
+        Bing PPC Advertising<br />
+        <span class="text-cyan-400">in {market.city}, {market.state}</span>
+      </h1>
+      <p class="text-white/70 text-xl leading-relaxed max-w-3xl mb-8">
+        Capture {market.city}'s high-income, high-intent Microsoft searchers at {market.savingsVsGoogle}. Our Bing specialists build campaigns that tap into {market.marketDesc}'s untapped paid search audience — complete with LinkedIn audience targeting and 20+ years of platform expertise.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/#contact" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-8 py-3.5 rounded-full transition-colors">
+          Get a Free {market.city} Bing Audit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-gray-50 dark:bg-gray-900/40 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 dark:divide-gray-700">
+        {[
+          { value: market.cpcRange, label: 'Bing CPC Range' },
+          { value: market.savingsVsGoogle, label: 'Savings vs Google' },
+          { value: market.population, label: 'Metro Population' },
+          { value: linkedInLabel[market.linkedInOpportunity], label: 'LinkedIn Opportunity' },
+        ].map((s) => (
+          <div class="py-6 px-4 text-center">
+            <div class="text-sm md:text-xl font-black text-blue-900 dark:text-blue-400">{s.value}</div>
+            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content + Sidebar -->
+  <article class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <!-- Body -->
+        <div class="lg:col-span-2 space-y-12">
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              The Bing PPC Opportunity in {market.city}, {market.state}
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>While most of your competitors are fighting over {market.city}'s Google Ads auction, Microsoft Advertising presents a largely untapped opportunity that delivers high-intent clicks at {market.savingsVsGoogle} across most {market.state} search categories. {market.city} is {market.marketDesc}, and its Bing audience reflects the platform's strongest demographics: older, more affluent, and more professionally connected than the average Google user.</p>
+              <p>At MicroManaged Media, we've been managing Bing campaigns in {market.city} for over 20 years. We know this market's specific Bing characteristics — which neighborhoods and ZIP codes over-index on Microsoft's search platform, which verticals see the greatest CPC advantages, and how to use LinkedIn's Professional Network targeting to reach {market.city}'s most valuable business audiences at search-level costs.</p>
+              <p>{market.localNote}</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              LinkedIn Targeting: Bing's Exclusive Advantage in {market.city}
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>No other search platform offers what Microsoft Advertising delivers through LinkedIn Professional Network integration. By layering LinkedIn profile data onto your {market.city} Bing campaigns, we can target searchers specifically by their job title, company name, industry, company size, or seniority level — combining the purchase intent of search advertising with the precision of professional audience targeting.</p>
+              <p>{linkedInNote}</p>
+              <p>We configure LinkedIn targeting for your {market.city} Bing campaigns with precision: identifying the exact job titles, companies, and seniority levels that represent your ideal customers, setting appropriate bid adjustments to compete effectively for these premium audiences, and continuously refining audience segments based on conversion data.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Top Industries for Bing PPC in {market.city}
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>{market.city}'s economy is anchored by {topIndustries} — and these are among the best-performing Bing PPC categories in this market. Bing's older, higher-income demographic aligns perfectly with the customer profiles most valuable to these industries, and the {market.competitionLevel.toLowerCase()} competition level on Bing means your ads can achieve dominant visibility without the bidding wars that define Google in these same categories.</p>
+              <p>For local service advertisers in {market.city}, Bing can deliver qualified leads at CPCs of {market.cpcRange} — compared to Google's {market.googleCpcRange} for equivalent keywords. For healthcare practices, financial advisors, real estate teams, and B2B service companies, the economics are similarly compelling: more qualified clicks, at lower costs, to an audience that demographically matches your highest-value customer profile.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Google + Bing: Integrated Paid Search for {market.city}
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>The optimal {market.city} paid search strategy combines Google and Bing as coordinated, complementary channels — not independent silos. Google captures the broadest audience; Bing reaches the high-income, professionally connected searchers your Google campaigns may be missing entirely.</p>
+              <p>Our integrated {market.city} approach begins by importing your Google campaign structure into Bing, then extensively customizing it for Microsoft's platform: adjusting bids to match Bing's {market.cpcRange} market rates, applying LinkedIn audience overlays to high-value ad groups, and refining ad copy to speak to Bing's distinct {market.state} audience profile. Every Bing conversion feeds back into your Google campaign intelligence — improving audience targeting, informing creative decisions, and building a comprehensive picture of your total {market.city} paid search performance.</p>
+              <p>Over 20 years of managing Bing campaigns in {market.city} and markets like it, we've refined a local optimization process that consistently delivers results within the first 60–90 days: CPLs well below Google benchmarks, conversion rates that match or exceed Google quality, and a growing share of {market.city}'s most valuable search audience that your competitors have left completely uncontested.</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <div class="sticky top-24 space-y-5">
+            <div class="bg-blue-900 rounded-2xl p-7 text-white">
+              <h3 class="font-bold text-lg mb-5">What's Included</h3>
+              <ul class="space-y-3">
+                {benefits.map((b) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-white/85 text-sm">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <h3 class="font-bold text-gray-900 dark:text-white text-sm">{market.city} Bing Market Data</h3>
+              </div>
+              <div class="space-y-2.5 text-sm">
+                {[
+                  { label: 'DMA Rank', value: `#${market.rank}` },
+                  { label: 'Bing CPC Range', value: market.cpcRange },
+                  { label: 'Google CPC Range', value: market.googleCpcRange },
+                  { label: 'Savings vs Google', value: market.savingsVsGoogle },
+                  { label: 'Avg. Bing CPL', value: market.avgCPL },
+                  { label: 'Competition Level', value: market.competitionLevel },
+                  { label: 'LinkedIn Opportunity', value: market.linkedInOpportunity },
+                ].map((row, i, arr) => (
+                  <div class={`flex justify-between ${i < arr.length - 1 ? 'border-b border-gray-100 dark:border-gray-700 pb-2' : ''}`}>
+                    <span class="text-gray-400">{row.label}</span>
+                    <span class="font-semibold text-gray-900 dark:text-white text-xs text-right max-w-[55%]">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-cyan-400 rounded-2xl p-7 text-gray-900">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <h3 class="font-bold text-lg">Free {market.city} Audit</h3>
+              </div>
+              <p class="text-gray-700 text-sm mb-5 leading-relaxed">
+                Get a free Bing opportunity analysis for {market.city} — we'll show you exactly what your Google campaigns are missing.
+              </p>
+              <a href="/#contact" class="block w-full bg-white hover:bg-gray-50 text-cyan-600 font-bold py-2.5 rounded-xl text-center transition-colors">
+                Request Free Audit
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Markets -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900/20 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-8 tracking-tight">More Bing Markets We Serve</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {related.map((m) => (
+          <a href={`/services/bing-ppc/${m.slug}`}
+            class="group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 hover:shadow-md rounded-xl p-5 transition-all duration-200">
+            <div class="flex items-start justify-between mb-2">
+              <span class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-400 text-xs font-black flex items-center justify-center group-hover:bg-cyan-50 dark:group-hover:bg-cyan-900/10 group-hover:text-cyan-500 transition-colors">
+                {m.rank}
+              </span>
+              <span class="text-xs text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full">{m.state}</span>
+            </div>
+            <div class="font-semibold text-gray-900 dark:text-white text-sm mt-3 group-hover:text-cyan-500 transition-colors">{m.city}</div>
+            <div class="text-xs text-gray-400 mt-1">{m.cpcRange} Bing CPC</div>
+            <div class="text-cyan-500 text-xs font-semibold mt-3 opacity-0 group-hover:opacity-100 transition-opacity">View market →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#0a1628] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(ellipse at 80% 50%, hsl(196 94% 40%) 0%, transparent 60%);"></div>
+    <div class="container mx-auto px-6 text-center max-w-2xl relative z-10">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+        Free {market.city} Bing PPC Consultation
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+        Stop Leaving {market.city}'s<br />Bing Audience Untapped
+      </h2>
+      <p class="text-white/60 text-lg mb-8 leading-relaxed">
+        Get a free competitive Bing audit for {market.city} and discover exactly what high-value searchers your Google campaigns are missing every single day.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-10 py-4 rounded-full transition-colors">
+          Start My {market.city} Bing Campaign
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-white/40 text-xs uppercase tracking-widest">
+        <span>✓ {market.savingsVsGoogle}</span>
+        <span>✓ LinkedIn Audience Targeting</span>
+        <span>✓ 20+ Years Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <ScrollToTop />
+</Layout>

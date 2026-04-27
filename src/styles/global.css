@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #111827;
+  
+  --color-primary: #000060;
+  --color-primary-foreground: #ffffff;
+  
+  --color-accent: #000060;
+  --color-accent-foreground: #ffffff;
+  
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #4b5563;
+  
+  --color-border: #e5e7eb;
+  --color-card: #ffffff;
+  --color-card-foreground: #111827;
+
+  --animate-marquee: marquee 32s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}

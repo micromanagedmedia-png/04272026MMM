@@ -1,0 +1,272 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import ScrollToTop from '../../../components/ScrollToTop.astro';
+import { ppcMarkets, getRelatedMarkets, type PPCMarket } from '../../../data/ppcMarkets';
+
+export async function getStaticPaths() {
+  return ppcMarkets.map((market) => ({
+    params: { citySlug: market.slug },
+    props: { market },
+  }));
+}
+
+const { market } = Astro.props as { market: PPCMarket };
+const APP_URL = 'https://micromanagedmedia.com';
+const related = getRelatedMarkets(market, 4);
+const topIndustries = market.industries.slice(0, 3).join(', ');
+const allIndustries = market.industries.join(', ');
+const tierLabel: Record<number, string> = { 1: 'Top 10 U.S. Market', 2: 'Top 25 U.S. Market', 3: 'Top 50 U.S. Market' };
+
+const benefits = [
+  'Certified Google Ads Partner',
+  'City-specific keyword strategy',
+  'Local competitor analysis',
+  'Geo-targeted ad copy & landing pages',
+  'Conversion & call tracking setup',
+  'Bi-weekly optimization reviews',
+  'Transparent, real-time reporting',
+  '20+ years paid search experience',
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Google PPC Advertising in ${market.city}, ${market.state}`,
+  description: `Precision-targeted Google Ads campaigns in ${market.fullName} by MicroManaged Media — ${market.competitionLevel} market expertise, 20+ years experience.`,
+  provider: { '@type': 'LocalBusiness', name: 'MicroManaged Media', url: APP_URL },
+  areaServed: { '@type': 'City', name: market.city, containedIn: { '@type': 'State', name: market.state } },
+};
+---
+
+<Layout
+  title={`Google PPC Advertising in ${market.city}, ${market.state} | MicroManaged Media`}
+  description={`Dominate Google search in ${market.fullName} with precision-targeted PPC campaigns. ${market.competitionLevel} market · ${market.cpcRange} typical CPC · 20+ years of ${market.state} paid search experience.`}
+  canonical={`${APP_URL}/services/google-ppc/${market.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <Navbar />
+
+  <!-- Hero -->
+  <section class="relative bg-[#0a1628] pt-32 pb-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 70% 40%, hsl(196 94% 40%) 0%, transparent 55%);"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <Breadcrumb
+        items={[
+          { label: 'Services' },
+          { label: 'Google PPC', href: '/services/google-ppc' },
+          { label: 'All Markets', href: '/services/google-ppc-locations' },
+          { label: `${market.city}, ${market.state}` },
+        ]}
+        variant="dark"
+        class="mb-8"
+      />
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-12 h-12 rounded-2xl bg-cyan-400/20 border border-cyan-400/30 flex items-center justify-center">
+          <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest block">#{market.rank} {tierLabel[market.tier]}</span>
+          <span class="text-white/50 text-xs">{market.competitionLevel} · {market.searchVolume} Search Volume</span>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight mb-5">
+        Google PPC Advertising<br />
+        <span class="text-cyan-400">in {market.city}, {market.state}</span>
+      </h1>
+      <p class="text-white/70 text-xl leading-relaxed max-w-3xl mb-8">
+        Dominate Google search in {market.fullName} with precision-targeted PPC campaigns built by specialists with 20+ years of paid search experience. We know {market.marketDesc} inside and out — and we know how to win here.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/#contact" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-8 py-3.5 rounded-full transition-colors">
+          Get a Free {market.city} PPC Audit
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-gray-50 dark:bg-gray-900/40 border-b border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 dark:divide-gray-700">
+        {[
+          { value: `#${market.rank}`, label: 'DMA Market Rank' },
+          { value: market.cpcRange, label: 'Typical CPC Range' },
+          { value: market.population, label: 'Metro Population' },
+          { value: market.avgCPL, label: 'Avg. Cost Per Lead' },
+        ].map((s) => (
+          <div class="py-6 px-4 text-center">
+            <div class="text-base md:text-2xl font-black text-blue-900 dark:text-blue-400">{s.value}</div>
+            <div class="text-xs text-gray-500 mt-1 uppercase tracking-wider">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content + Sidebar -->
+  <article class="py-20">
+    <div class="container mx-auto px-6">
+      <div class="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+        <!-- Body -->
+        <div class="lg:col-span-2 space-y-12">
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Why Google PPC in {market.city} Requires Local Expertise
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>{market.city} is {market.marketDesc}, and its Google Ads landscape reflects that distinction. Ranked #{market.rank} among all U.S. advertising markets, this metro generates significant search volume across categories including {allIndustries} — each with its own competitive dynamics, seasonal patterns, and audience behavior that only deep local market knowledge can unlock.</p>
+              <p>At MicroManaged Media, we've been running Google PPC campaigns in {market.city} for over 20 years. We understand how searchers in {market.state} behave differently from those in other states — the peak search hours, the conversion rate variations by neighborhood or suburb, and the specific competitor strategies that dominate the local auction. A generic national PPC strategy deployed in {market.city} will consistently underperform a campaign built specifically for this market.</p>
+              <p>{market.localNote}</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Our {market.city} Google PPC Strategy
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>Every campaign we build for {market.city} begins with a full competitive audit of the local paid search landscape. We analyze every significant advertiser in your category — their ad copy, landing pages, bidding strategies, and keyword coverage — to identify exactly where the gaps and opportunities lie. In a {market.competitionLevel.toLowerCase()} market like {market.city}, this intelligence is the difference between winning and wasting budget.</p>
+              <p>We build geo-targeted keyword lists that go far beyond generic city-level terms. Our research captures hyper-local intent — neighborhood-level searches, landmark-adjacent queries, and the specific terminology {market.city} residents use when they're ready to buy. We incorporate city-specific negative keyword lists to ensure your ads don't bleed budget on adjacent searches that will never convert for your business. And because typical CPCs in {market.city} range from {market.cpcRange}, every click must be qualified to protect your ROI.</p>
+              <p>Our ad copy is written specifically for the {market.city} audience — referencing local context where relevant, and speaking to the priorities of {market.state} consumers. The result: higher Quality Scores, lower CPCs, and better conversion rates than generic national campaigns can ever achieve.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Top Industries We Serve in {market.city}
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>{market.city}'s economy is anchored by {topIndustries} — and these are among the most active and competitive Google Ads categories in the market. Our team brings deep vertical expertise to every campaign: we understand the seasonal bidding dynamics in home services, the B2B decision-making cycles in professional services, and the local competitive positioning that separates winning campaigns from budget burners.</p>
+              <p>Whether you're an HVAC contractor trying to capture emergency service searches, a roofing company capitalizing on seasonal demand, a plumber who needs the phone ringing year-round, or any other local service business — our team has managed these exact campaigns in this exact market and knows what it takes to win.</p>
+            </div>
+          </section>
+
+          <section>
+            <h2 class="text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">
+              Call Tracking, Attribution & Reporting for {market.city} Campaigns
+            </h2>
+            <div class="space-y-3 text-gray-500 dark:text-gray-400 leading-relaxed text-[1.0625rem]">
+              <p>Knowing that your {market.city} Google PPC campaign is generating impressions and clicks is not enough. You need to know exactly which keywords are driving phone calls, which ads are converting to leads, and what your true cost per customer acquisition is. Our {market.city} PPC campaigns include comprehensive conversion tracking from day one: call tracking with local {market.state} numbers, form submission tracking, and lead attribution.</p>
+              <p>Every {market.city} client receives a real-time reporting dashboard that shows performance at the campaign, ad group, keyword, and ad level. Our monthly strategy calls translate the data into plain English and always come with specific next-step recommendations — not just charts. We believe in complete transparency: you own your Google Ads account, you see everything we see, and you'll always understand exactly what we're doing with your investment and why.</p>
+              <p>Over 20 years of managing Google PPC in markets like {market.city}, we've developed deep institutional knowledge of what works — and what doesn't — in {market.competitionLevel.toLowerCase()} market conditions. Our {market.city} clients consistently see cost-per-lead reductions of 30–60% within the first 90 days as we optimize campaigns away from wasted spend and toward the keywords and audiences that generate real business.</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <div class="sticky top-24 space-y-5">
+            <div class="bg-blue-900 rounded-2xl p-7 text-white">
+              <h3 class="font-bold text-lg mb-5">What's Included</h3>
+              <ul class="space-y-3">
+                {benefits.map((b) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-cyan-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-white/85 text-sm">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-4 h-4 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <h3 class="font-bold text-gray-900 dark:text-white text-sm">{market.city} Market Facts</h3>
+              </div>
+              <div class="space-y-2.5 text-sm">
+                {[
+                  { label: 'DMA Rank', value: `#${market.rank}` },
+                  { label: 'Competition', value: market.competitionLevel },
+                  { label: 'Typical CPC', value: market.cpcRange },
+                  { label: 'Avg. CPL', value: market.avgCPL },
+                  { label: 'Search Volume', value: market.searchVolume },
+                ].map((row, i, arr) => (
+                  <div class={`flex justify-between ${i < arr.length - 1 ? 'border-b border-gray-100 dark:border-gray-700 pb-2' : ''}`}>
+                    <span class="text-gray-400">{row.label}</span>
+                    <span class="font-semibold text-gray-900 dark:text-white text-xs text-right">{row.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="bg-cyan-400 rounded-2xl p-7 text-gray-900">
+              <div class="flex items-center gap-2 mb-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <h3 class="font-bold text-lg">Free {market.city} Audit</h3>
+              </div>
+              <p class="text-gray-700 text-sm mb-5 leading-relaxed">
+                Get a custom competitive analysis of your {market.city} Google Ads landscape — free, no obligation.
+              </p>
+              <a href="/#contact" class="block w-full bg-white hover:bg-gray-50 text-cyan-600 font-bold py-2.5 rounded-xl text-center transition-colors">
+                Request Free Audit
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Markets -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-900/20 border-t border-gray-200 dark:border-gray-700">
+    <div class="container mx-auto px-6">
+      <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-8 tracking-tight">More Markets We Serve</h2>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {related.map((m) => (
+          <a href={`/services/google-ppc/${m.slug}`}
+            class="group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-cyan-400/40 hover:shadow-md rounded-xl p-5 transition-all duration-200">
+            <div class="flex items-start justify-between mb-2">
+              <span class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-900 dark:text-blue-400 text-xs font-black flex items-center justify-center group-hover:bg-cyan-50 dark:group-hover:bg-cyan-900/10 group-hover:text-cyan-500 transition-colors">
+                {m.rank}
+              </span>
+              <span class="text-xs text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-full">{m.state}</span>
+            </div>
+            <div class="font-semibold text-gray-900 dark:text-white text-sm mt-3 group-hover:text-cyan-500 transition-colors">{m.city}</div>
+            <div class="text-xs text-gray-400 mt-1">{m.cpcRange} avg CPC</div>
+            <div class="text-cyan-500 text-xs font-semibold mt-3 opacity-0 group-hover:opacity-100 transition-opacity">View market →</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-[#0a1628] relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(ellipse at 80% 50%, hsl(196 94% 40%) 0%, transparent 60%);"></div>
+    <div class="container mx-auto px-6 text-center max-w-2xl relative z-10">
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-xs font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+        Free {market.city} PPC Consultation
+      </div>
+      <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+        Ready to Win Google Search<br />in {market.city}?
+      </h2>
+      <p class="text-white/60 text-lg mb-8 leading-relaxed">
+        Get a free competitive audit of the {market.city} Google Ads landscape and a custom strategy built around your business goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/#contact" class="inline-flex items-center justify-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-gray-900 font-bold px-10 py-4 rounded-full transition-colors">
+          Start My {market.city} Campaign
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 mt-10 text-white/40 text-xs uppercase tracking-widest">
+        <span>✓ 20+ Years Experience</span>
+        <span>✓ #{market.rank} Market Expertise</span>
+        <span>✓ No Long-Term Contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+  <ScrollToTop />
+</Layout>
